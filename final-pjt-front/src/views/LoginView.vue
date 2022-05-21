@@ -1,18 +1,18 @@
 <template>
-  <div>
-      <h1>Login</h1>
+  <div class="container" style="width:600px;">
+      <h1>로그인</h1>
 
       <form @submit.prevent="login(credentials)">
-        <div>
-            <label for="username">ID : </label>
-            <input type="text" id="username" required>
+        <div class="my-3">
+            <label class="d-flex" for="username">아이디 </label>
+            <input class="form-control" type="text" id="username" required>
         </div>
 
-        <div>
-            <label for="password">비밀번호 : </label>
-            <input type="password" id="password" required>
+        <div class="my-3">
+            <label class="d-flex" for="password">비밀번호</label>
+            <input class="form-control" type="password" id="password" required>
         </div>
-        <button>로그인</button>
+        <button class="d-flex btn btn-info fw-bold" style="color:white;">로그인</button>
       </form>
   </div>
 </template>
@@ -37,5 +37,4 @@ export default {
 </script>
 
 <style>
-
 </style>
