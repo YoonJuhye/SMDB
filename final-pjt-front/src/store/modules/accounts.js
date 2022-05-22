@@ -43,8 +43,8 @@ export default {
         .then(res => {
           const token = res.data.key
           dispatch('saveToken', token)
-          dispatch('fetchCurrentUser')
-          router.push({ name: 'articles' })
+          // dispatch('fetchCurrentUser')
+          router.push({ name: 'home' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -61,8 +61,8 @@ export default {
         .then(res => {
           const token = res.data.key
           dispatch('saveToken', token)
-          dispatch('fetchCurrentUser')
-          router.push({ name: 'articles' })
+          // dispatch('fetchCurrentUser')
+          router.push({ name: 'home' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -78,40 +78,39 @@ export default {
       })
         .then(() => {
           dispatch('removeToken')
-          alert('성공적으로 logout!')
-          router.push({ name: 'login' })
+          router.push({ name: 'home' })
         })
         .error(err => {
           console.error(err.response)
         })
     },
 
-    fetchCurrentUser({ commit, getters, dispatch }) {
-      if (getters.isLoggedIn) {
-        axios({
-          url: drf.accounts.currentUserInfo(),
-          method: 'get',
-          headers: getters.authHeader,
-        })
-          .then(res => commit('SET_CURRENT_USER', res.data))
-          .catch(err => {
-            if (err.response.status === 401) {
-              dispatch('removeToken')
-              router.push({ name: 'login' })
-            }
-          })
-      }
+    // fetchCurrentUser({ commit, getters, dispatch }) {
+    //   if (getters.isLoggedIn) {
+    //     axios({
+    //       url: drf.accounts.currentUserInfo(),
+    //       method: 'get',
+    //       headers: getters.authHeader,
+    //     })
+    //       .then(res => commit('SET_CURRENT_USER', res.data))
+    //       .catch(err => {
+    //         if (err.response.status === 401) {
+    //           dispatch('removeToken')
+    //           router.push({ name: 'login' })
+    //         }
+    //       })
+    //   }
     },
 
-    fetchProfile({ commit, getters }, { username }) {
-      axios({
-        url: drf.accounts.profile(username),
-        method: 'get',
-        headers: getters.authHeader,
-      })
-        .then(res => {
-          commit('SET_PROFILE', res.data)
-        })
-    },
-  },
+  //   fetchProfile({ commit, getters }, { username }) {
+  //     axios({
+  //       url: drf.accounts.profile(username),
+  //       method: 'get',
+  //       headers: getters.authHeader,
+  //     })
+  //       .then(res => {
+  //         commit('SET_PROFILE', res.data)
+  //       })
+  //   },
+  // },
 }

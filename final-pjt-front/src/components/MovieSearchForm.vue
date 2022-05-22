@@ -1,15 +1,27 @@
 <template>
   <div class="d-flex align-items-center" style="height:300px;" id="searchForm">
     <div class="col-12 d-flex justify-content-center">
-        <input class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
-        <button class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
+        <input @keyup.enter="search(keyword)" v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
+        <button @click="search(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
     
   </div>
 </template>
-<script>
-export default {
 
+<script>
+import { mapActions } from 'vuex'
+
+
+export default {
+  name:'MovieSearchForm',
+  data() {
+    return {
+      keyword:'',
+    }
+  },
+  methods: {
+      ...mapActions(['search'])
+    },
 
 }
 </script>

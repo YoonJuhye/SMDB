@@ -4,8 +4,12 @@
       <h3 style="color: #3FC1C9;">SMDB</h3>
       <div class="d-flex align-items-center">
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
-        <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
-        <router-link to="/login" class="text-decoration-none mx-2">로그인</router-link>
+
+        <router-link v-if="login" to="/logout" class="text-decoration-none mx-2">로그아웃</router-link>
+        <div v-else>
+          <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
+          <router-link to="/login" class="text-decoration-none mx-2">로그인</router-link>
+        </div>
       </div>
     </nav>
     
@@ -16,6 +20,33 @@
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  data: function  () {
+    return {
+      login: false,
+    }
+  },
+  created:function () {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.login = true
+    } else{
+      this.login = false
+    }
+  },
+  updated: function () {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.login = true
+    } else{
+      this.login = false
+    }
+  }
+}
+</script>
+
 
 <style>
 #app {
