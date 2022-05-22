@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <h1>현재 인기있는 영화</h1>
+  <div class="container">
+      <h3 class="d-flex">인기 영화</h3>
       <div class="d-flex">
         <movie-list-item />
         <movie-list-item />

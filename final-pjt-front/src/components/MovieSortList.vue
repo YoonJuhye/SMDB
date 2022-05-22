@@ -1,7 +1,12 @@
 <template>
   <div>
-      <h1>Movie Sort List</h1>
-      <movie-list-item />
+      <h3 class="d-flex">Movie Sort List</h3>
+      <div class="d-flex">
+        <movie-list-item />
+        <movie-list-item />
+        <movie-list-item />
+        <movie-list-item />
+      </div>
   </div>
 </template>
 

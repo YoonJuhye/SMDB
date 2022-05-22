@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="width: 800px;">
+  <div class="container">
       <h1>회원가입</h1>
 
       <form @submit.prevent="signup(credentials)">

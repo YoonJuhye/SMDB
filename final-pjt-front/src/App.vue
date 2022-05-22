@@ -8,7 +8,12 @@
         <router-link to="/login" class="text-decoration-none mx-2">로그인</router-link>
       </div>
     </nav>
-    <router-view style="margin-top:20px;" />
+    
+    <router-view id="view"/>
+    
+    <footer class="d-flex align-items-center">
+      <h2 class="mx-3" style="color: #3FC1C9;">Ssafy Movie DB</h2>
+    </footer>
   </div>
 </template>
 
@@ -19,11 +24,17 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 170px;
+
 }
 
 nav {
   background: #364F6B;
   padding: 30px;
+  
 }
 
 nav a {
@@ -33,5 +44,18 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+#view {
+  margin-top:20px;
+  padding-bottom: 60px;
+  min-height: 1200px;
+}
+
+footer {
+  background: #364F6B;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 </style>

@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SignupView from '../views/SignupView'
 import LoginView from '../views/LoginView'
 import LogoutView from '../views/LogoutView'
+import SearchView from '../views/SearchView'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component: LogoutView
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchView
   },
 ]
 
