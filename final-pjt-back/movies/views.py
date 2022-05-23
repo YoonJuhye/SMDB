@@ -142,3 +142,10 @@ def comment_update_or_delete(request, review_pk, comment_pk):
         return update_comment()
     elif request.method == 'DELETE':
         return delete_comment()
+
+@api_view(['GET'])
+def search_movies(request, keyword):
+    print('1234')
+    movies = Movie.objects.filter(title__contains=keyword)
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)

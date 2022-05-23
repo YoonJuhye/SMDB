@@ -3,10 +3,7 @@ from .models import Genre, Cast, Crew, Movie, Review, Comment
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-
-
 class CastListSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = Cast
         fields = ('id', 'name', )

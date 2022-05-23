@@ -13,7 +13,7 @@
       </div>
     </nav>
     
-    <router-view class="mx-5" id="view"/>
+    <router-view class="mx-5" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center">
       <h2 class="mx-3" style="color: #3FC1C9;">Ssafy Movie DB</h2>
