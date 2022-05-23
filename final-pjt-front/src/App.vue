@@ -3,7 +3,6 @@
     <nav class="sticky-top d-flex justify-content-between p-3">
       <a class="text-decoration-none fs-2" style="color: #3FC1C9;" href="/">SMDB</a>
       <div class="d-flex align-items-center">
-        <div v-if="login" class="fs-6">{{ this.$store.state.accounts.currentUser.username }}님</div>
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
         <router-link v-if="login" to="/logout" class="text-decoration-none mx-2">로그아웃</router-link>
         <div v-else>

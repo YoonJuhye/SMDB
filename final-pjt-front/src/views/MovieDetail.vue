@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Details</h1>
-      <p>{{ this.$store.state.movies.movieDetail }}</p>
+
       <hr>
       <div class="d-flex">
         <img v-if="movie.poster_path" class="card-img col-5" style="width:300px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
