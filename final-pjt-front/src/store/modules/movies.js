@@ -9,11 +9,12 @@ export default {
         searchMovies : null,
         movies:[],
         movieDetail:[],
-
+        sorted:[],
 
     },
     getters:{
         movies: state => state.movies,
+        sorted: state => state.sorted,
     },
     mutations:{
         SET_SEARCHKEYWORD: (state,keyword) => state.searchKeyword = keyword,
@@ -27,7 +28,7 @@ export default {
                 state.searchMovies = movies
             }
         },
-        SET_SORT: (genre) => console.log(genre)
+        SET_SORT: (state,genre) => state.sorted = genre
     },
     actions:{
         search({ commit,getters }, keyword) {
@@ -78,14 +79,14 @@ export default {
             .catch(err => console.error(err.response))
             
         },
-        sort({ getters }, genre){
+        sort({ commit,getters }, genre){
             axios({
                 url: drf.movies.sort(genre),
                 method: 'get',
                 headers: getters.authHeader,
               })
             .then(res => {
-                console.log(res)
+                commit('SET_SORT', res.data)
             })
         }
     }
