@@ -4,12 +4,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class GenreListSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Genre
-        fields = ('id', 'name', )
-
 
 class CastListSerializer(serializers.ModelSerializer):
     
@@ -44,7 +38,13 @@ class MovieListSerializer(serializers.ModelSerializer):
         fields = ('title', 'vote_average',)
 
 class MovieSerializer(serializers.ModelSerializer):
-    casts = CastListSerializer(many=True, read_only=True)
+    class GenreSerializer(serializers.ModelSerializer):
+    
+        class Meta:
+            model = Genre
+            fields = '__all__'
+
+    genre_ids=GenreSerializer(many=True)
 
     class Meta:
         model = Movie

@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Genre(models.Model):
-    name = models.TextField()
+    name = models.CharField(max_length=50)
 
 # class Platform(models.Model):
 #     neflix = models.BooleanField()
