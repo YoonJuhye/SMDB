@@ -14,7 +14,7 @@ class Genre(models.Model):
 # class Video(models.Model):
 
 class Movie(models.Model):
-    genre_ids=models.ManyToManyField(Genre, related_name='movies')
+    genre_ids=models.ManyToManyField(Genre)
     # casts=models.ManyToManyField(Cast, related_name='movies')
     # crews=models.ManyToManyField(Crew, related_name='movies')
     title = models.CharField(max_length=100)
