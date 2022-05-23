@@ -20,25 +20,25 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     overview = models.TextField()
     vote_average = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    vote_count = models.IntegerField()
+    vote_count = models.IntegerField(null=True)
     popularity = models.FloatField(validators=[MinValueValidator(0)])
     release_date = models.TextField()
     poster_path = models.TextField()
     video = models.BooleanField()
 
 class Cast(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,null=True)
     name = models.TextField()
-    character = models.TextField()
+    character = models.TextField(null=True)
     # profile_path = models.TextField()
 
 
 class Crew(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
     name = models.TextField()
-    job = models.TextField()
+    job = models.TextField(null=True)
 
 class Review(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE , null=True)
     title = models.CharField(max_length=200)
     content = models.TextField()

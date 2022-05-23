@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <nav class="sticky-top d-flex justify-content-between p-3">
-      <h3 style="color: #3FC1C9;">SMDB</h3>
+      <a class="text-decoration-none fs-2" style="color: #3FC1C9;" href="/">SMDB</a>
       <div class="d-flex align-items-center">
+        <div v-if="login" class="fs-6">{{ this.$store.state.accounts.currentUser.username }}님</div>
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
-
         <router-link v-if="login" to="/logout" class="text-decoration-none mx-2">로그아웃</router-link>
         <div v-else>
           <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
@@ -13,7 +13,7 @@
       </div>
     </nav>
     
-    <router-view id="view"/>
+    <router-view class="mx-5" id="view"/>
     
     <footer class="d-flex align-items-center">
       <h2 class="mx-3" style="color: #3FC1C9;">Ssafy Movie DB</h2>
@@ -26,6 +26,7 @@ export default {
   data: function  () {
     return {
       login: false,
+      user: '',
     }
   },
   created:function () {
@@ -53,7 +54,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 
   min-height: 100%;

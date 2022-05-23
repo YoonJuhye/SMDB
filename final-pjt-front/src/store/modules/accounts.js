@@ -43,7 +43,7 @@ export default {
         .then(res => {
           const token = res.data.key
           dispatch('saveToken', token)
-          // dispatch('fetchCurrentUser')
+          dispatch('fetchCurrentUser')
           router.push({ name: 'home' })
         })
         .catch(err => {
@@ -61,7 +61,7 @@ export default {
         .then(res => {
           const token = res.data.key
           dispatch('saveToken', token)
-          // dispatch('fetchCurrentUser')
+          dispatch('fetchCurrentUser')
           router.push({ name: 'home' })
         })
         .catch(err => {
@@ -85,23 +85,23 @@ export default {
         })
     },
 
-    // fetchCurrentUser({ commit, getters, dispatch }) {
-    //   if (getters.isLoggedIn) {
-    //     axios({
-    //       url: drf.accounts.currentUserInfo(),
-    //       method: 'get',
-    //       headers: getters.authHeader,
-    //     })
-    //       .then(res => commit('SET_CURRENT_USER', res.data))
-    //       .catch(err => {
-    //         if (err.response.status === 401) {
-    //           dispatch('removeToken')
-    //           router.push({ name: 'login' })
-    //         }
-    //       })
-    //   }
+    fetchCurrentUser({ commit, getters, dispatch }) {
+      if (getters.isLoggedIn) {
+        axios({
+          url: drf.accounts.currentUserInfo(),
+          method: 'get',
+          headers: getters.authHeader,
+        })
+          .then(res => commit('SET_CURRENT_USER', res.data))
+          .catch(err => {
+            if (err.response.status === 401) {
+              dispatch('removeToken')
+              router.push({ name: 'home' })
+            }
+          })
+      }
     },
-
+  }
   //   fetchProfile({ commit, getters }, { username }) {
   //     axios({
   //       url: drf.accounts.profile(username),

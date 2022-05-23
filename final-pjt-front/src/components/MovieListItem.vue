@@ -1,21 +1,26 @@
 <template>
-    <div class="card mx-2 my-2" style="width:9rem; height:12rem;">
-        <img class="card-header card-img-top" src="#" alt="#">
-    
+    <div class="card mx-3" style="width:200px; height:340px;">
+        <img class="card-header card-img-top" style="width:200px; height:250px; padding:0;"  :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
+
         <div class="card-body">
-            <p class="card-title my-3"> 영화제목 </p>
-            <div class="card-text"> 개봉일 </div>
+            <p class="card-title" style="width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"> {{ movie.title }} </p>
+            <div class="card-text"><small class="text-muted">{{ movie.release_date }}</small></div>
         </div>
   </div>
 </template>
 
 <script>
 export default {
-    name:'MovieListItem'
+    name:'MovieListItem',
+    props:{
+        movie:{
+            type:Object,
+
+        }
+    }
 
 }
 </script>
 
 <style>
-
 </style>

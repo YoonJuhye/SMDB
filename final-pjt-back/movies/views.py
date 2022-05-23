@@ -7,7 +7,7 @@ from .serializers import CastSerializer, CrewSerializer, GenreSerializer, MovieS
 # Create your views here.
 @api_view(['GET'])
 def movie_list(request):
-    movies = Movie.objects.all()
+    movies = Movie.objects.order_by('-popularity')
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
 

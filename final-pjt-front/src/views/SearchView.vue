@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="container">
       <h1>Search List</h1>
-      <div>
+      <div class="my-3">
         <input @keyup.enter="research(keyword)" v-model="keyword" type="text">
         <button @click="research(keyword)">Search</button>
 
         <div v-if="this.$store.state.movies.searchMovie">
-          <h1>영화</h1>
+          <search-list />
         </div>
-        <h2 v-else>'{{ this.$store.state.movies.searchKeyword }}' 검색어와 일치하는 영화가 없습니다.</h2>
+        <h2 class="my-5" v-else>'{{ this.$store.state.movies.searchKeyword }}' 검색어와 일치하는 영화가 없습니다.</h2>
       </div>
   </div>
 </template>
