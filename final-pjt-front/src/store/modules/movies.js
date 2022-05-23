@@ -26,13 +26,12 @@ export default {
                 console.log(movies)
                 state.searchMovies = movies
             }
-            
-        }
+        },
+        SET_SORT: (genre) => console.log(genre)
     },
     actions:{
         search({ commit,getters }, keyword) {
             commit('SET_SEARCHKEYWORD', keyword)
-            console.log(keyword)
             axios({
                 url: drf.movies.search(keyword),
                 method: 'get',
@@ -57,8 +56,6 @@ export default {
             })
             .catch(err => console.error(err.response))
         },
-
-        
         fetchMovies({ commit, getters }) {
             axios({
               url: drf.movies.movies(),
@@ -80,6 +77,16 @@ export default {
             })
             .catch(err => console.error(err.response))
             
+        },
+        sort({ getters }, genre){
+            axios({
+                url: drf.movies.sort(genre),
+                method: 'get',
+                headers: getters.authHeader,
+              })
+            .then(res => {
+                console.log(res)
+            })
         }
     }
 }

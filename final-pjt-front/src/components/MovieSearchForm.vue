@@ -1,6 +1,11 @@
 <template>
-  <div class="d-flex align-items-center" style="height:300px;" id="searchForm">
-    <div class="col-12 d-flex justify-content-center">
+  <div style="height:300px;" id="searchForm">
+    <div id="maintext">
+      <h1 class="welcome">Welcome.</h1>
+      <h1 class="smdb">Ssafy Movie DB.</h1>
+    </div>
+    
+    <div class="col-12 d-flex justify-content-center" style="padding-top:30px;">
         <input @keyup.enter="search(keyword)" v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
         <button @click="search(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
@@ -28,8 +33,8 @@ export default {
 
 <style>
 #searchButton {
-    background: linear-gradient(to right, rgba(30,213,169, 1) 30%, 
-                rgba(1,180,228, 1) 100%);
+    background: linear-gradient(to right, #6441A5 40%, 
+                #2a0845 100%);
     border-radius: 20px;
     border: none;
     color: white;
@@ -44,5 +49,19 @@ export default {
 }
 #searchForm {
     background-color: rgba(216, 214, 226, 0.301);
+}
+#maintext {
+  padding-left: 70px;
+  padding-top: 60px;
+}
+.welcome {
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+}
+.smdb {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0;
 }
 </style>

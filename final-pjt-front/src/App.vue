@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <nav class="sticky-top d-flex justify-content-between p-3">
-      <a class="text-decoration-none fs-2" style="color: #3FC1C9;" href="/">SMDB</a>
+    <nav class="sticky-top d-flex justify-content-between p-2 align-items-center">
+      <div>
+        <img alt="ssafy logo" src="./assets/ssafy_logo.png" style="width:60px;">
+        <a class="SMDB text-decoration-none" href="/">SMDB</a>
+      </div>
+      
       <div class="d-flex align-items-center">
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
-        <router-link v-if="login" to="/logout" class="text-decoration-none mx-2">로그아웃</router-link>
+        <router-link v-if="login" to="/logout" class="text-decoration-none mx-2" style="color:#d1d1f0;">로그아웃</router-link>
         <div v-else>
           <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
           <router-link to="/login" class="text-decoration-none mx-2">로그인</router-link>
@@ -14,13 +18,18 @@
     
     <router-view class="mx-5" id="view" :key="$route.fullPath" />
     
-    <footer class="d-flex align-items-center">
-      <h2 class="mx-3" style="color: #3FC1C9;">Ssafy Movie DB</h2>
+    <footer class="d-flex align-items-center justify-content-center">
+      <div >
+        <h2 class="">Ssafy Movie DB</h2>
+        <small style="padding-left:20px;">made by _________________</small>
+      </div>
+      
     </footer>
   </div>
 </template>
 
 <script>
+
 export default {
   data: function  () {
     return {
@@ -62,18 +71,23 @@ export default {
 }
 
 nav {
-  background: #364F6B;
+  background: #292961;
   padding: 30px;
   
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #d1d1f0;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  background-color: white;
+  color: #292961;
+  border-radius: 10px;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 #view {
   margin-top:20px;
@@ -82,10 +96,18 @@ nav a.router-link-exact-active {
 }
 
 footer {
-  background: #364F6B;
+  background: #292961;
   height: 100px;
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: #d1d1f0;
+}
+
+.SMDB {
+  color: #d1d1f0;
+  font-size: 25px;
+  font-weight: 100;
+  height: 100px;
 }
 </style>

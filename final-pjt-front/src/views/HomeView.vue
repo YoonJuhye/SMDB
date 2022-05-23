@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <movie-search-form class="my-3" />
     <movie-list class="my-5" />
     <movie-sort-list class="my-5" />

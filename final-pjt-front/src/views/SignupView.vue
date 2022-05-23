@@ -1,12 +1,11 @@
 <template>
   <div class="container">
-      <h1>회원가입</h1>
-
+      <h1 class="my-5">회원가입</h1>
       <account-error v-if="authError"></account-error>
 
       <form @submit.prevent="signup(credentials)">
         <div class="my-5">
-          <label class="d-flex" for="username">아이디</label>
+          <label class="d-flex fs-5" for="username">아이디</label>
           <input v-model="credentials.username" class="form-control" type="text" id="username" required/>
         </div>
         

@@ -144,7 +144,14 @@ def comment_update_or_delete(request, review_pk, comment_pk):
 
 @api_view(['GET'])
 def search_movies(request, keyword):
-    print('1234')
     movies = Movie.objects.filter(title__contains=keyword)
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def sort_list(request, value):
+    movies = Movie.objects.filter(genre_ids = value)
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)

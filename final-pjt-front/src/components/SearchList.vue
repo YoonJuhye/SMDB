@@ -1,7 +1,7 @@
 <template>
-  <div class="my-5" id="search_card">
+  <div @click="movieDetail(movie.id)" class="my-5" id="search_card">
       <div class="d-flex">
-      <img style="width:150px; border-radius: 10px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
+      <img v-if="movie.poster_path" style="width:150px; border-radius: 10px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`' alt="#">
       <div class="mx-5 my-4">
           <h3>{{ movie.title }}</h3>
           <small style="color: #999;">{{ movie.release_date }}</small>
@@ -12,12 +12,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     name:'SearchList',
     props:{
         movie:{
             type:Object,
         }
+    },
+    methods:{
+        ...mapActions(['movieDetail'])
     }
 
 }
@@ -27,6 +31,5 @@ export default {
 #search_card {
     border:2px solid rgba(95, 167, 201, 0.24);
     box-shadow: 2px 2px 3px;
-    border-radius: 10px;
 }
 </style>

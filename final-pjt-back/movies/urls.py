@@ -12,7 +12,8 @@ urlpatterns = [
     path('<int:movie_pk>/review/<int:review_pk>/comments/<int:comment_pk>/', views.comment_update_or_delete),
     path('cast/', views.cast_list),
     path('crew/', views.crew_list),
-    path('search/<keyword>/', views.search_movies)
+    path('search/<keyword>/', views.search_movies),
+    path('sort/<value>/', views.sort_list)
 ]
 
 

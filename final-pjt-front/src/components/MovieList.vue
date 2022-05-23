@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
       <h3 class="d-flex mx-3 my-3">인기 영화</h3>
       <div class="slimscroll" id='popular'>
         <movie-list-item style="display: inline-block;" v-for="movie in movies" :key="movie.pk" :movie="movie" />

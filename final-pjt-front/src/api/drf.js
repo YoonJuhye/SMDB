@@ -4,6 +4,7 @@ const ACCOUNTS = 'accounts/'
 const MOVIES = 'movies/'
 const REVIEWS = 'reviews/'
 const SEARCH = 'search/'
+const SORT = 'sort/'
 
 export default {
   accounts: {
@@ -15,7 +16,8 @@ export default {
   movies:{
     movies: () => HOST + MOVIES,
     movie_detail: movie_pk => HOST+MOVIES+`${movie_pk}/`,
-    search: keyword => HOST+MOVIES+SEARCH+`${keyword}/`
+    search: keyword => HOST+MOVIES+SEARCH+`${keyword}/`,
+    sort: value => HOST +MOVIES+SORT+`${value}/`
   },
   reviews:{
     reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEWS

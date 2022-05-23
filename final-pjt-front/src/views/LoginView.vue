@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <h1>로그인</h1>
+      <h1 class="my-5">로그인</h1>
 
       <account-error v-if="authError"></account-error>
 
