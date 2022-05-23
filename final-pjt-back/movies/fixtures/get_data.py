@@ -58,7 +58,7 @@ for data in genre_data:
 
 # 무비 id 데이터 movie_Ids
 
-for i in range(1, 6):
+for i in range(1, 26):
     request = (f'{HOST}{MOVIE_LIST_URI}?api_key={API_KEY}&language=ko&page={i}')
     response = urllib.request.urlopen(request)
     json_str = response.read().decode('utf-8')
@@ -76,8 +76,14 @@ for idx, movie_Id in enumerate(movie_Ids):
     response = urllib.request.urlopen(movie_request)
     json_str = response.read().decode('utf-8')
     json_object = json.loads(json_str)
+
+
+
     if json_object.get("poster_path"):
-        if json_object.get("genres"):
+        if json_object.get('genres'):
+            genres = []
+            for i in json_object.get("genres"):
+                genres.append(i['id'])
 
             my_object = {
                 "model": "movies.movie",
@@ -93,29 +99,12 @@ for idx, movie_Id in enumerate(movie_Ids):
                     # "runtime": json_object.get("runtime"),
                     "poster_path": json_object.get("poster_path"),
                     "video": json_object.get("video"),
-                    "genre_ids" : movie.get("genre_ids"),
+                    "genre_ids" : genres,
                     # "original_title": json_object.get("original_title"),
                 }  
             }
-        else:
-            my_object = {
-                "model": "movies.movie",
-                "pk": json_object.get("id"),
-                "fields": {
-                    "title": json_object.get("title"),
-                    "overview": json_object.get("overview"),
-                    "vote_average": json_object.get("vote_average"),
-                    # "adult": json_object.get("adult"),
-                    "popularity": json_object.get("popularity"),
-                    "release_date": json_object.get("release_date"),
-                    # "runtime": json_object.get("runtime"),
-                    # "vote_count": json_object.get("vote_count"),
-                    "poster_path": json_object.get("poster_path"),
-                    "video": json_object.get("video"),
-                    "genres": json_object.get("genres"),
-                    # "original_title": json_object.get("original_title"),
-                }
-            }
+
+        print(my_object["fields"]["genre_ids"])
         movie_list.append(my_object)
 
 

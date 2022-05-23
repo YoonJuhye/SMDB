@@ -152,6 +152,11 @@ def search_movies(request, keyword):
 
 @api_view(['GET'])
 def sort_list(request, value):
-    movies = Movie.objects.filter(genre_ids = value)
-    serializer = MovieSerializer(movies, many=True)
-    return Response(serializer.data)
+    if value == 'all':
+        movies = Movie.objects.order_by('-vote_average')
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+    else:
+        movies = Movie.objects.filter(genre_ids = value).order_by('-vote_average')
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
