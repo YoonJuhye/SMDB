@@ -11,6 +11,7 @@ export default {
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
   },
   movies:{
-    movies: () => HOST + MOVIES
+    movies: () => HOST + MOVIES,
+    movie_detail: movie_pk => HOST+MOVIES+`${movie_pk}/`
   }
 }

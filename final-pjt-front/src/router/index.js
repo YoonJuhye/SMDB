@@ -5,6 +5,7 @@ import SignupView from '../views/SignupView'
 import LoginView from '../views/LoginView'
 import LogoutView from '../views/LogoutView'
 import SearchView from '../views/SearchView'
+import MovieDetail from '../views/MovieDetail'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: SearchView
+  },
+  {
+    path: '/movie/',
+    name: 'Detail',
+    component: MovieDetail
   },
 ]
 

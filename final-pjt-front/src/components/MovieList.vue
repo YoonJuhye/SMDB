@@ -40,7 +40,7 @@ export default {
 }
 
 .slimscroll::-webkit-scrollbar {
-    width: 30px;
+    width: 60px;
     height: 10px;
 }
 

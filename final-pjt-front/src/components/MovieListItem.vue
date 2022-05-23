@@ -1,5 +1,5 @@
 <template>
-    <div class="card mx-3" style="width:200px; height:340px;">
+    <div @click="movieDetail(movie.id)" class="card mx-3" style="width:200px; height:340px;">
         <img class="card-header card-img-top" style="width:200px; height:250px; padding:0;"  :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
 
         <div class="card-body">
@@ -10,13 +10,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     name:'MovieListItem',
     props:{
         movie:{
             type:Object,
-
         }
+    },
+    methods:{
+        ...mapActions(['movieDetail'])
     }
 
 }
