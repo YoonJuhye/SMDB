@@ -39,12 +39,6 @@ class Crew(models.Model):
     job = models.TextField(null=True)
 
 class Review(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE , null=True)
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-
-
-class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
