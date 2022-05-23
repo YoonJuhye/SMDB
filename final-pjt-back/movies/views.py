@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import get_list_or_404, render, get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -8,17 +9,37 @@ import requests
 from django.db.models import Count
 
 # Create your views here.
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def movie_list(request):
-    movies = Movie.objects.order_by('-popularity')
-    serializer = MovieSerializer(movies, many=True)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        movies = Movie.objects.order_by('-popularity')
+        serializer = MovieSerializer(movies, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = MovieSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-@api_view(['GET'])
+
+@api_view(['GET', 'DELETE', 'PUT'])
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
-    serializer = MovieSerializer(movie)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        movie.delete()
+        data = {
+            'delete': f'{movie.title}이 삭제되었습니다.',
+        }
+        return Response(data, status=status.HTTP_204_NO_CONTENT)
+    elif request.method == 'PUT':
+        serializer = MovieSerializer(movie, request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
 
 def cast_list(request):
     casts = get_list_or_404(Cast)
@@ -31,21 +52,18 @@ def crew_list(request):
     return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
-def review_list_or_create(request):
-
+def review_list_or_create(request, movie_pk):
     def review_list():
-        # comment 개수 추가
-        reviews = Review.objects.annotate(
-            comment_count=Count('comments', distinct=True),
-            # like_count=Count('like_users', distinct=True)
-        ).order_by('-pk')
+        reviews = get_object_or_404(Movie, pk=movie_pk)
         serializer = ReviewListSerializer(reviews, many=True)
         return Response(serializer.data)
     
     def create_review():
+        user = request.user
+        review = get_object_or_404(Movie, pk=movie_pk)
         serializer = ReviewSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(user=request.user)
+            serializer.save(review=review, user=user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     if request.method == 'GET':
@@ -55,6 +73,7 @@ def review_list_or_create(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def review_detail_or_update_or_delete(request, review_pk):
+    # movie = get_object_or_404(Movie, pk=movie_pk)
     review = get_object_or_404(Review, pk=review_pk)
 
     def review_detail():
