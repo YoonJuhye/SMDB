@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: { accounts,movies,reviews },
-  plugins: [createPersistedState({ paths: ['movies','reviews'] })]
+  plugins: [createPersistedState({ paths: ['accounts','movies','reviews'] })]
 
 
 })

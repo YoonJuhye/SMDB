@@ -5,6 +5,8 @@ const MOVIES = 'movies/'
 const REVIEW = 'review/'
 const SEARCH = 'search/'
 const SORT = 'sort/'
+const COMMENT = 'comments/'
+
 
 export default {
   accounts: {
@@ -21,6 +23,7 @@ export default {
   },
   reviews:{
     reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW,
-    update_delete_rivew: review => HOST + MOVIES + REVIEW +`${review.id}/`
+    update_delete_rivew: review => HOST + MOVIES + REVIEW +`${review.id}/`,
+    create_comment: comment => HOST + MOVIES + REVIEW + `${comment.review}/` + COMMENT,
   }
 }

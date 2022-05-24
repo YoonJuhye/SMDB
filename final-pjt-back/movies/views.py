@@ -84,9 +84,7 @@ def review_update_or_delete(request, review_pk):
             review.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
-    if request.method == 'GET':
-        return review_detail()
-    elif request.method == 'PUT':
+    if request.method == 'PUT':
         if request.user == review.user:
             return update_review()
     elif request.method == 'DELETE':
@@ -101,7 +99,7 @@ def create_comment(request, review_pk):
     serializer = CommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(review=review, user=user)
-
+        
         # 기존 serializer 가 return 되면, 단일 comment 만 응답으로 받게됨.
         # 사용자가 댓글을 입력하는 사이에 업데이트된 comment 확인 불가 => 업데이트된 전체 목록 return 
         comments = review.comments.all()

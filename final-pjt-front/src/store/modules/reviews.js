@@ -69,6 +69,21 @@ export default {
                 router.go()
             })
             .catch(err => console.error(err.response))
+        },
+        createComment({ getters }, data){
+            console.log(data)
+            console.log('악시오스전')
+            axios({
+                url: drf.reviews.create_comment(data),
+                method: 'post',
+                data : data,
+                headers: getters.authHeader,
+            })
+            .then( res => {
+                console.log(res)
+                router.go()
+            })
+            .catch(err => console.error(err.response))
         }
     }
 }

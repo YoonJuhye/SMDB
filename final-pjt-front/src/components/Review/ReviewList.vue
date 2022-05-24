@@ -1,11 +1,10 @@
 <template>
   <div>
-      <h1>Review</h1>
       <div v-if="this.$store.state.reviews.reviews">
-          <review-list-item v-for="review in this.$store.state.reviews.reviews" :key="review.pk" :review="review" />
+          <review-list-item class="my-5" v-for="review in this.$store.state.reviews.reviews" :key="review.pk" :review="review" />
       </div>
       <div v-else>
-          <h2>리뷰가 없어요~</h2>
+          <h2 class="my-5">리뷰가 없어요~</h2>
       </div>
     
   </div>
