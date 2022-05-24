@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView'
 import LogoutView from '../views/LogoutView'
 import SearchView from '../views/SearchView'
 import MovieDetail from '../views/MovieDetail'
+import MyPageView from '../views/MyPageView.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/movie/',
     name: 'Detail',
     component: MovieDetail
+  },
+  {
+    path: '/mypage/',
+    name: 'MyPage',
+    component: MyPageView
   },
 ]
 

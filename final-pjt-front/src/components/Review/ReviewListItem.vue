@@ -1,48 +1,45 @@
 <template>
   <div class="card" id="reviewCard">
-    <div class="d-flex justify-content-between mx-4 my-4" v-if="isModal==false">
+    <div class="d-flex justify-content-around mx-3 my-4" v-if="isModal==false">
       <div class="col-6">
-        <h3 class="mx-3" id="reviewtitle">{{ review.title }}</h3>
+        <h3 id="reviewtitle">{{ review.title }}</h3>
         
-        <p class="mx-3" id="reviewContent">{{ review.content }}</p>
-        <details>
-          <summary @click="commentClick">댓글</summary>
+        <p class="my-3" id="reviewContent">{{ review.content }}</p>
+
+      </div>
+      <div class="card mx-2 col-3">
+        <img src="../../assets/people.png" alt="#">
+        <div class="d-flex justify-content-around">
+          <h3>{{ review.user.username }} <span class="badge bg-secondary">{{ review.rank }}점</span></h3>
+        </div>
+              
+      </div>
+      <div class="col-2 d-flex">
+        
+
+        <div class="d-flex flex-column justify-content-between">
+          <div>
             <div>
-              <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
-              <comment-form :reviewid="review.id" />
+              <label>게시일</label>
+              <p>{{ review.created_at | moment('YYYY-MM-DD HH:mm')}}</p>
             </div>
-          </details>
-      </div>
-   
-      <div class="col-5 d-flex justify-content-between">
-        <div>
-          <h3>작성자 : {{ review.user.username }}</h3>
-          <p>평가점수 : {{ review.rank }}점</p>
-        </div>
-
-        <div>
-          <div>
-            <label>게시일</label>
-            <p>{{ review.created_at }}</p>
-          </div>
-  
-          <div>
-            <label>수정일</label>
-            <p>{{ review.updated_at }}</p>
-          </div>
-
-          <div class="d-flex">
-            <div class="align-self-center" v-if="this.$store.state.accounts.currentUser.username == review.user.username">
-              <button @click="isModal=true" id="updelbutton">UPDATE</button>
-              <button @click="deleteReview(review)" id="updelbutton">DELETE</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
     
+            <div>
+              <label>수정일</label>
+              <p>{{ review.updated_at | moment('YYYY-MM-DD HH:mm')}}</p>
+            </div>
+          </div>
+          
+
+            <div class="d-flex" v-if="this.$store.state.accounts.currentUser.username == review.user.username">
+              <button style="background-color:rgba(190, 255, 255, 0.767);" @click="isModal=true" id="updelbutton">UPDATE</button>
+              <button style="background-color:rgb(255, 175, 175);" @click="deleteReview(review)" id="updelbutton">DELETE</button>
+            </div>
+        </div>
+      </div>
 
     </div>
+       
 
       <div class="black-bg" v-if="isModal==true" id="updateReview">
         <div class="white-bg">
@@ -50,12 +47,25 @@
           <input class="form-control my-2" type="text" v-model="upReview.title">
           <label>내용</label>
           <input class="form-control my-2" type="text" v-model="upReview.content">
-          <button @click="updateButton(upReview)">수정하기</button>
-          <button @click="isModal=false">취소</button>
+          <div class="d-flex justify-content-end">
+              <button class="btn btn-info" @click="updateButton(upReview)">수정하기</button>
+            <button class="btn btn-danger" @click="isModal=false">취소</button>
+          </div>
         </div>
-
       </div>
-      
+
+
+       <details class="mx-5 my-3">
+          <summary @click="commentClick">댓글</summary>
+            <div v-if="review.comments.length">
+              <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
+            </div>
+            <h4 v-else class="my-3">댓글이 없어요~</h4>
+            <comment-form :reviewid="review.id" />
+        </details>
+
+
+
   </div>
 </template>
 
@@ -114,6 +124,8 @@ export default {
 #updelbutton {
   height: 30px;
   align-self: center;
+  border: none;
+  border-radius: 10px;
 }
 
 #reviewContent {

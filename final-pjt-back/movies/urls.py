@@ -10,7 +10,7 @@ urlpatterns = [
     path('review/<int:review_pk>/', views.review_update_or_delete),
     path('review/<int:review_pk>/comments/', views.load_comment),
     path('review/<int:review_pk>/comments/new/', views.create_comment),
-    path('review/comments/<int:comment_pk>/', views.comment_update_or_delete),
+    path('review/<int:review_pk>/comments/<int:comment_pk>/', views.comment_update_or_delete),
     path('cast/', views.cast_list),
     path('crew/', views.crew_list),
     path('search/<keyword>/', views.search_movies),

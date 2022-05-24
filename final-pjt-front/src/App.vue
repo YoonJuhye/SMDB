@@ -2,12 +2,14 @@
   <div id="app">
     <nav class="sticky-top d-flex justify-content-between p-2 align-items-center">
       <div>
-        <img alt="ssafy logo" src="./assets/ssafy_logo.png" style="width:60px;">
-        <a class="SMDB text-decoration-none" href="/">SMDB</a>
+        <a class="SMDB text-decoration-none" href="/">
+          <img alt="ssafy logo" src="./assets/SMDB.png" style="height:70px;">
+        </a>
       </div>
       
       <div class="d-flex align-items-center">
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
+        <router-link to="/mypage/" class="text-decoration-none mx-2">마이페이지</router-link>
         <router-link v-if="login" to="/logout" class="text-decoration-none mx-2" style="color:#d1d1f0;">로그아웃</router-link>
         <div v-else>
           <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>

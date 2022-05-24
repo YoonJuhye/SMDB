@@ -1,8 +1,7 @@
 <template>
-  <div>
-      {{ reviewid }}
-      <input type="text" v-model="comment.content">
-      <button @click="createCommentbutton(comment)">작성</button>
+  <div class="d-flex">
+      <input @keyup.enter="createCommentbutton()" class="form" type="text" v-model="comment.content">
+      <button class="button" @click="createCommentbutton()">작성</button>
   </div>
 </template>
 
@@ -17,9 +16,9 @@ export default {
     },
     methods:{
         ...mapActions(['createComment']),
-        createCommentbutton: function (content) {
-            this.comment.review = this.reviewComment
-            this.createComment(content)
+        createCommentbutton: function () {
+            this.comment.review = this.reviewid
+            this.createComment(this.comment)
             
         }
     },
@@ -36,5 +35,16 @@ export default {
 </script>
 
 <style>
-
+.form {
+    border-radius: 10px;
+    border: solid 1px;
+    width: 500px;
+    margin-right: 10px;
+}
+.button {
+    padding-inline: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(166, 220, 245);;
+}
 </style>

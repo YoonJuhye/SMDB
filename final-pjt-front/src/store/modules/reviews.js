@@ -8,6 +8,7 @@ export default {
     state:{
         reviews:[],
         comments:[],
+        rank:[],
     },
     getters:{
     },
@@ -27,6 +28,9 @@ export default {
                 state.comments = comments
                 console.log(state.comments)
             }
+        },
+        SET_RANK(state, rank){
+            state.rank =rank
         }
     },
     actions:{
@@ -37,6 +41,11 @@ export default {
                 headers: getters.authHeader,
             })
             .then(res => {
+                let average = 0
+                for (const review of res.data) {
+                    average = average + review.rank
+                }
+                commit('SET_RANK',(average/3).toFixed(1))
                 commit('SET_REVIEW',res.data)
             })
             .catch(err => console.error(err.response))
@@ -49,7 +58,7 @@ export default {
                 headers: getters.authHeader,
             })
             .then( res => {
-                console.log(res.data.movie)
+                console.log(res.data)
             })
             .catch(err => console.error(err.response))
         },
@@ -84,6 +93,33 @@ export default {
                 url: drf.reviews.create_comment(data),
                 method: 'post',
                 data : data,
+                headers: getters.authHeader,
+            })
+            .then( res => {
+                console.log(res)
+                router.go()
+            })
+            .catch(err => console.error(err.response))
+        },
+        deleteComment({ getters },data){
+            console.log(data)
+            axios({
+                url: drf.reviews.comment_update_or_delete(data),
+                method: 'DELETE',
+                headers: getters.authHeader,
+            })
+            .then( res => {
+                console.log(res)
+                router.go()
+            })
+            .catch(err => console.error(err.response))
+        },
+        updateComment({ getters },data){
+            console.log(data)
+            axios({
+                url: drf.reviews.comment_update_or_delete(data),
+                method: 'PUT',
+                data:data,
                 headers: getters.authHeader,
             })
             .then( res => {

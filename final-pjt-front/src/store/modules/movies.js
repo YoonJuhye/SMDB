@@ -77,6 +77,7 @@ export default {
             .then(res => {
                 commit('SET_MOVIEPK', movie_pk)
                 commit('SET_DETAIL', res.data)
+
                 router.push({ name:'Detail' })
             })
             .catch(err => console.error(err.response))

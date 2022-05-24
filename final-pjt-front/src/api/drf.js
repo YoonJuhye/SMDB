@@ -26,5 +26,6 @@ export default {
     reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW,
     update_delete_rivew: review => HOST + MOVIES + REVIEW +`${review.id}/`,
     create_comment: comment => HOST + MOVIES + REVIEW + `${comment.review}/` + COMMENT + 'new/',
+    comment_update_or_delete: comment => HOST +MOVIES +REVIEW +`${comment.review}/`+ COMMENT + `${comment.pk}/`
   }
 }

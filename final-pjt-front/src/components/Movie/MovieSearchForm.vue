@@ -6,7 +6,7 @@
     </div>
     
     <div class="col-12 d-flex justify-content-center" style="padding-top:30px;">
-        <input v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
+        <input v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화를 검색하세요." aria-label="영화를 검색하세요." aria-describedby="searchButton">
         <button @click="search(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
     
@@ -42,17 +42,21 @@ export default {
 }
 #searchInput {
     border-radius: 20px;
-    border: none;
+    border: solid 1px;
     margin-right: -30px;
     outline: none;
     padding: 10px 20px;
 }
 #searchForm {
     background-color: rgba(216, 214, 226, 0.301);
+    background-image: url(../../assets/login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #maintext {
   padding-left: 70px;
   padding-top: 60px;
+  margin-left: 180;
 }
 .welcome {
     font-size: 3em;
