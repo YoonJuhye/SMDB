@@ -20,6 +20,7 @@ export default {
     sort: value => HOST +MOVIES+SORT+`${value}/`
   },
   reviews:{
-    reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW
+    reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW,
+    update_delete_rivew: review => HOST + MOVIES + REVIEW +`${review.id}/`
   }
 }

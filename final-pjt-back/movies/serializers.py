@@ -80,18 +80,3 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
-
-class ReviewListSerializer(serializers.ModelSerializer):
-    class UserSerializer(serializers.ModelSerializer):
-        class Meta:
-            model = User
-            fields = ('pk', 'username')
-
-    user = UserSerializer(read_only=True)
-    # queryset annotate (views에서 채워줄것!)
-    comment_count = serializers.IntegerField()
-    # like_count = serializers.IntegerField()
-
-    class Meta:
-        model = Review
-        fields = ('pk', 'user', 'title', 'comment_count',)

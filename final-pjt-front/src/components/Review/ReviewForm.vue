@@ -6,7 +6,7 @@
           <h4>제목</h4>
           <input class="my-3 form-control" v-model="newReview.title" type="text"><br>
           <h4>내용</h4>
-          <textarea @keyup.enter="create(newReview)" v-model="newReview.content" class="form-control" name="" id="" cols="30" rows="10"></textarea><br>
+          <textarea v-model="newReview.content" class="form-control" name="" id="" cols="30" rows="10"></textarea><br>
           <button @click="create(newReview)" class="form-control">제출하기</button>
       </form>
   </div>

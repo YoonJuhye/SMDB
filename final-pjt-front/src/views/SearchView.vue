@@ -17,7 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import SearchList from '../components/SearchList.vue'
+import SearchList from '../components/Movie/SearchList.vue'
 
 export default {
     name:'SearchView',

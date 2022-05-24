@@ -28,7 +28,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import ReviewForm from '../components/Review/ReviewForm.vue'
+
 export default {
   name:'MovieDetail',
   components:{
@@ -39,9 +41,12 @@ export default {
       movie:[],
     }
   },
+  methods:{
+    ...mapActions(['loadReview'])
+  },
   created : function () {
     this.movie = this.$store.state.movies.movieDetail
-    
+    this.loadReview(this.movie.id)
   },
 
   }

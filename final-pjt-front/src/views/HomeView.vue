@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import MovieSearchForm from '../components/MovieSearchForm.vue'
-import MovieSortList from '../components/MovieSortList.vue'
-import MovieList from '../components/MovieList.vue'
+import MovieSearchForm from '../components/Movie/MovieSearchForm.vue'
+import MovieSortList from '../components/Movie/MovieSortList.vue'
+import MovieList from '../components/Movie/MovieList.vue'
 
 import { mapActions } from 'vuex'
 

@@ -68,14 +68,13 @@ export default {
               .then(res => commit('SET_MOVIES', res.data))
               .catch(err => console.error(err.response))
         },
-        movieDetail({commit, getters,dispatch}, movie_pk){
+        movieDetail({commit, getters}, movie_pk){
             axios({
               url: drf.movies.movie_detail(movie_pk),
               method: 'get',
               headers: getters.authHeader,
             })
             .then(res => {
-                dispatch('loadReview',movie_pk)
                 commit('SET_MOVIEPK', movie_pk)
                 commit('SET_DETAIL', res.data)
                 router.push({ name:'Detail' })

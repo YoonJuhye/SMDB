@@ -3,8 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Genre, Cast, Crew, Movie, Review, Comment
-from .serializers import CastSerializer, CrewSerializer, MovieSerializer, ReviewListSerializer, ReviewSerializer, CommentSerializer
-import requests
+from .serializers import CastSerializer, CrewSerializer, MovieSerializer, ReviewSerializer, CommentSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -70,12 +69,8 @@ def review_list_or_create(request, movie_pk):
         return create_review()
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def review_detail_or_update_or_delete(request, review_pk):
+def review_update_or_delete(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
-
-    def review_detail():
-        serializer = ReviewSerializer(review)
-        return Response(serializer.data)
 
     def update_review():
         if request.user == review.user:
