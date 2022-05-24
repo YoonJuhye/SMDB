@@ -45,14 +45,17 @@ export default {
 }
 
 .slimscroll::-webkit-scrollbar-thumb {
-    background-color: #B0B0B0;
+    /* background-color: #B0B0B0; */
+    background-image: linear-gradient(180deg, #6212a3 0%, #708ad4 99%);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
 }
 
 .slimscroll::-webkit-scrollbar-track {
-    background-color: white;
+    /* background-color: white; */
+    background-color: #e4e4e4;
     border-radius: 10px;
     box-shadow: inset 0px 0px 3px white;
 }
