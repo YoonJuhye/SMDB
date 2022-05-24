@@ -1,8 +1,8 @@
-const HOST = 'http://localhost:8001/api/v1/'
+const HOST = 'http://localhost:8000/api/v1/'
 
 const ACCOUNTS = 'accounts/'
 const MOVIES = 'movies/'
-const REVIEWS = 'reviews/'
+const REVIEW = 'review/'
 const SEARCH = 'search/'
 const SORT = 'sort/'
 
@@ -20,6 +20,6 @@ export default {
     sort: value => HOST +MOVIES+SORT+`${value}/`
   },
   reviews:{
-    reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEWS
+    reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW
   }
 }

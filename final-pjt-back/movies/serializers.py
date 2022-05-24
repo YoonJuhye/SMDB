@@ -52,20 +52,6 @@ class MovieSerializer(serializers.ModelSerializer):
 #     class Meta(GenrelistSerializer.Meta):
 #         fields = GenrelistSerializer.Meta.fields + ['movie', ]
 
-
-class ReviewListSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Review
-        fields = ('title', 'content', )
-
-class ReviewSerializer(serializers.ModelSerializer):
-    movie = MovieListSerializer(read_only=True)
-    class Meta:
-        model = Review
-        fields = ('id', 'movie', 'title', 'content',)
-        read_only_fields = ('movie', )
-
 class CommentSerializer(serializers.ModelSerializer):
     
     class UserSerializer(serializers.ModelSerializer):
@@ -93,7 +79,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('pk', 'user', 'title', 'content', 'comments',)
+        fields = '__all__'
 
 class ReviewListSerializer(serializers.ModelSerializer):
     class UserSerializer(serializers.ModelSerializer):

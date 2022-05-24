@@ -10,6 +10,7 @@ export default {
         movies:[],
         movieDetail:[],
         sorted:[],
+        movie_pk:'',
 
     },
     getters:{
@@ -28,7 +29,8 @@ export default {
                 state.searchMovies = movies
             }
         },
-        SET_SORT: (state,genre) => state.sorted = genre
+        SET_SORT: (state,genre) => state.sorted = genre,
+        SET_MOVIEPK: (state, pk) => state.movie_pk = pk,
     },
     actions:{
         search({ commit,getters }, keyword) {
@@ -66,13 +68,15 @@ export default {
               .then(res => commit('SET_MOVIES', res.data))
               .catch(err => console.error(err.response))
         },
-        movieDetail({commit, getters}, movie_pk){
+        movieDetail({commit, getters,dispatch}, movie_pk){
             axios({
               url: drf.movies.movie_detail(movie_pk),
               method: 'get',
               headers: getters.authHeader,
             })
             .then(res => {
+                dispatch('loadReview',movie_pk)
+                commit('SET_MOVIEPK', movie_pk)
                 commit('SET_DETAIL', res.data)
                 router.push({ name:'Detail' })
             })

@@ -6,7 +6,7 @@
     </div>
     
     <div class="col-12 d-flex justify-content-center" style="padding-top:30px;">
-        <input @keyup.enter="search(keyword)" v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
+        <input v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화, 배우, 제작진을 검색하세요." aria-label="영화, 배우, 제작진을 검색하세요." aria-describedby="searchButton">
         <button @click="search(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
     

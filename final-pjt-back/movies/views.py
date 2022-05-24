@@ -53,16 +53,15 @@ def crew_list(request):
 @api_view(['GET', 'POST'])
 def review_list_or_create(request, movie_pk):
     def review_list():
-        reviews = get_object_or_404(Movie, pk=movie_pk)
-        serializer = ReviewListSerializer(reviews, many=True)
+        reviews = Review.objects.filter(movie_id=movie_pk)
+        serializer = ReviewSerializer(reviews, many=True)
         return Response(serializer.data)
     
     def create_review():
         user = request.user
-        review = get_object_or_404(Movie, pk=movie_pk)
         serializer = ReviewSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(review=review, user=user)
+            serializer.save(user=user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     if request.method == 'GET':
@@ -72,7 +71,6 @@ def review_list_or_create(request, movie_pk):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def review_detail_or_update_or_delete(request, review_pk):
-    # movie = get_object_or_404(Movie, pk=movie_pk)
     review = get_object_or_404(Review, pk=review_pk)
 
     def review_detail():
@@ -144,7 +142,7 @@ def comment_update_or_delete(request, review_pk, comment_pk):
 
 @api_view(['GET'])
 def search_movies(request, keyword):
-    movies = Movie.objects.filter(title__contains=keyword)
+    movies = Movie.objects.filter(title__contains=keyword).order_by('-popularity')
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data)
 

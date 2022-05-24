@@ -52,7 +52,7 @@ export default {
     methods: {
       ...mapActions(['signup'])
     },
-        computed: {
+    computed: {
       ...mapGetters(['authError'])
     },
 

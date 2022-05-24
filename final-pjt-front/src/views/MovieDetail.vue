@@ -22,18 +22,17 @@
         </div>
       </div>
        <hr>
-    <review-list />
+    <review-form />
   </div>
  
 </template>
 
 <script>
-import ReviewList from '../components/ReviewList.vue'
-
+import ReviewForm from '../components/Review/ReviewForm.vue'
 export default {
   name:'MovieDetail',
   components:{
-    ReviewList
+    ReviewForm
   },
   data () {
     return{
