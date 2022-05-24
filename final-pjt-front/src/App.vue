@@ -21,11 +21,24 @@
     <router-view class="mx-5" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center justify-content-center">
-      <div >
+      <!-- <div >
         <h2 class="">Ssafy Movie DB</h2>
         <small style="padding-left:20px;">made by _________________</small>
+      </div> -->
+      <div class="container">
+        <div class="grid">
+          <div class="column-xs-12">
+            <ul class="social">
+              <li>  
+                <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
+                <span><font-awesome-icon icon="fa-brands fa-github"/></span>
+                </a>
+                </li>
+            </ul>
+            <p class="copyright">&copy; Copyright haengsong & juhye</p>
+          </div>
+        </div>
       </div>
-      
     </footer>
   </div>
 </template>
@@ -97,13 +110,24 @@ nav a.router-link-exact-active {
   min-height: 1200px;
 }
 
+.social, .copyright {
+  margin: 1rem;
+}
+
+.social li {
+  display: inline-block;
+}
+
 footer {
+  padding: 1rem 0;
+  text-align: center;
   background: #292961;
   height: 100px;
   position: absolute;
   bottom: 0;
   width: 100%;
   color: #d1d1f0;
+  
 }
 
 .SMDB {
