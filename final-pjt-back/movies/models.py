@@ -25,6 +25,7 @@ class Movie(models.Model):
     release_date = models.TextField()
     poster_path = models.TextField()
     video = models.BooleanField()
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
 class Cast(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE,null=True)

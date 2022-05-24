@@ -160,3 +160,16 @@ def sort_list(request, value):
         movies = Movie.objects.filter(genre_ids = value).order_by('-vote_average')[0:20]
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data)
+
+@api_view(['POST'])
+def like_movie(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    user = request.user
+    if movie.like_users.filter(pk=user.pk).exists():
+        movie.like_users.remove(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
+    else:
+        movie.like_users.add(user)
+        serializer = MovieSerializer(movie)
+        return Response(serializer.data)
