@@ -5,13 +5,11 @@
         <h3 class="mx-3" id="reviewtitle">{{ review.title }}</h3>
         
         <p class="mx-3" id="reviewContent">{{ review.content }}</p>
-
-
         <details>
           <summary @click="commentClick">댓글</summary>
             <div>
-              <comment-list :reviewComment="reviewComment" />
-              <comment-form :reviewComment="reviewComment" />
+              <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
+              <comment-form :reviewid="review.id" />
             </div>
           </details>
       </div>
@@ -89,13 +87,13 @@ export default {
     }
   },
   methods:{
-    ...mapActions(['deleteReview','updateReview']),
+    ...mapActions(['deleteReview','updateReview','loadComment']),
     updateButton(upReview) {
       this.isModal=false
       this.updateReview(upReview)
     },
     commentClick() {
-      this.reviewComment = this.review.id
+
     }
   },
   created : function () {

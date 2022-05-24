@@ -47,7 +47,77 @@
 
 ## 2. 진행상황
 
-##### 5월 21일
+##### 5월 24일
+
+> ## Django
+>
+> - django 영화 좋아요 기능, 프로필 구현
+> - View 함수 수정
+>
+> ##### #.프로필 Serializer
+>
+> ```python
+> class ProfileSerializer(serializers.ModelSerializer):
+> 
+>     class MovieSerializer(serializers.ModelSerializer):
+>         
+>         class Meta:
+>             model = Movie
+>             fields = ('pk', 'title', 'poster_path')
+> 
+>     like_movies = MovieSerializer(many=True)
+>     movies = MovieSerializer(many=True)
+> 
+>     class Meta:
+>         model = get_user_model()
+>         fields = ('pk', 'username', 'email', 'like_movies', 'movies',)
+> ```
+>
+> 
+>
+> ##### #.View
+>
+> ```python
+> @api_view(['GET'])
+> def profile(request, username):
+>     user = get_object_or_404(User, username=username)
+>     serializer = ProfileSerializer(user)
+>     return Response(serializer.data)
+> ```
+>
+> 
+>
+> 
+>
+> ## Vue
+>
+> >메인화면에 장르별로 선택하면 영화가 장르별로 정렬되도록 추가
+> >
+> >커뮤니티 글과 댓글을 각각 생성, 수정 ,삭제 기능추가
+> >
+> >삭제 수정 버튼은 작성자일경우만 보임
+>
+> 
+>
+> ![](readme.assets/장르별정렬.png)
+>
+> 
+>
+> 
+>
+> 
+>
+> ![](readme.assets/커뮤니티.png)
+>
+> 
+>
+> 
+
+
+
+
+
+##### 5월 23일
 
 >## Django
 >

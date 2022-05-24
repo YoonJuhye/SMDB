@@ -8,6 +8,7 @@ const SORT = 'sort/'
 const COMMENT = 'comments/'
 
 
+
 export default {
   accounts: {
     login: () => HOST + ACCOUNTS + 'login/',
@@ -24,6 +25,6 @@ export default {
   reviews:{
     reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW,
     update_delete_rivew: review => HOST + MOVIES + REVIEW +`${review.id}/`,
-    create_comment: comment => HOST + MOVIES + REVIEW + `${comment.review}/` + COMMENT,
+    create_comment: comment => HOST + MOVIES + REVIEW + `${comment.review}/` + COMMENT + 'new/',
   }
 }

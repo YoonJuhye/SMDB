@@ -1,5 +1,6 @@
 <template>
   <div>
+      {{ reviewid }}
       <input type="text" v-model="comment.content">
       <button @click="createCommentbutton(comment)">작성</button>
   </div>
@@ -10,7 +11,7 @@ import { mapActions } from 'vuex'
 export default {
     name:'CommentForm',
     props: {
-        reviewComment:{
+        reviewid:{
             type:Number,
         }
     },

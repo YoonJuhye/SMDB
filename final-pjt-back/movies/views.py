@@ -91,6 +91,12 @@ def review_update_or_delete(request, review_pk):
         if request.user == review.user:
             return delete_review()
 
+@api_view(['GET'])
+def load_comment(request,review_pk):
+        reviews = Comment.objects.filter(review_id=review_pk)
+        serializer = CommentSerializer(reviews, many=True)
+        return Response(serializer.data)
+
 @api_view(['POST'])
 def create_comment(request, review_pk):
     user = request.user
@@ -99,7 +105,7 @@ def create_comment(request, review_pk):
     serializer = CommentSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(review=review, user=user)
-        
+
         # 기존 serializer 가 return 되면, 단일 comment 만 응답으로 받게됨.
         # 사용자가 댓글을 입력하는 사이에 업데이트된 comment 확인 불가 => 업데이트된 전체 목록 return 
         comments = review.comments.all()

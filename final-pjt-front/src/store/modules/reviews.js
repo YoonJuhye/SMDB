@@ -7,6 +7,7 @@ import router from "@/router"
 export default {
     state:{
         reviews:[],
+        comments:[],
     },
     getters:{
     },
@@ -16,6 +17,15 @@ export default {
                 state.reviews = null
             } else {
                 state.reviews = review
+            }
+        },
+        SET_COMMENTS(state,comments){
+            if (comments.length == 0) {
+                state.comments = null
+                console.log(state.comments)
+            } else {
+                state.comments = comments
+                console.log(state.comments)
             }
         }
     },
@@ -56,8 +66,6 @@ export default {
             .catch(err => console.error(err.response))
         },
         updateReview({ getters }, data){
-            console.log('악시오스전')
-            console.log(data)
             axios({
                 url: drf.reviews.update_delete_rivew(data),
                 method: 'PUT',
@@ -72,7 +80,6 @@ export default {
         },
         createComment({ getters }, data){
             console.log(data)
-            console.log('악시오스전')
             axios({
                 url: drf.reviews.create_comment(data),
                 method: 'post',
@@ -84,6 +91,6 @@ export default {
                 router.go()
             })
             .catch(err => console.error(err.response))
-        }
+        },
     }
 }
