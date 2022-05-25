@@ -21,23 +21,13 @@
     <router-view class="mx-5" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center justify-content-center">
-      <!-- <div >
-        <h2 class="">Ssafy Movie DB</h2>
-        <small style="padding-left:20px;">made by _________________</small>
-      </div> -->
       <div class="container">
-        <div class="grid">
-          <div class="column-xs-12">
-            <ul class="social">
-              <li>  
-                <!-- <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
-                <span><font-awesome-icon icon="fa-brands fa-github"/></span>
-                </a> -->
-                </li>
-            </ul>
+          <div class="align-">
+                <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
+                <img alt="ssafy logo" src="./assets/git.png" style="height:30px;">
+                </a>
             <p class="copyright">&copy; Copyright haengsong & juhye</p>
           </div>
-        </div>
       </div>
     </footer>
   </div>

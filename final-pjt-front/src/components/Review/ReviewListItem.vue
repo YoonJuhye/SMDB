@@ -47,6 +47,8 @@
           <input class="form-control my-2" type="text" v-model="upReview.title">
           <label>내용</label>
           <input class="form-control my-2" type="text" v-model="upReview.content">
+          <label>평가점수</label>
+          <input class="my-3 form-control" v-model="upReview.rank" type="number" min="0" max="10">
           <div class="d-flex justify-content-end">
               <button style="background-color:rgba(190, 255, 255, 0.767);" id="updelbutton" @click="updateButton(upReview)">수정하기</button>
             <button style="background-color:rgb(255, 175, 175);" id="updelbutton" @click="isModal=false">취소</button>
@@ -56,7 +58,7 @@
 
 
        <details class="mx-5 my-3">
-          <summary @click="commentClick">댓글</summary>
+          <summary @click="commentClick">댓글 ({{ review.comments.length }})</summary>
             <div v-if="review.comments.length">
               <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
             </div>

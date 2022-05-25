@@ -58,12 +58,12 @@ export default {
   margin-top: 5px;
 }
 .rightbutton {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .leftbutton {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .selectbutton:active {
