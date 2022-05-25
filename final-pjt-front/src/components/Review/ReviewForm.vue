@@ -9,11 +9,10 @@
           <h2 class="my-3">리뷰 작성</h2>
           <h4>제목</h4>
           <input class="my-3 form-control" v-model="newReview.title" type="text"><br>
-          <h4>평가점수</h4>
-          <input class="my-3 form-control" v-model="newReview.rank" type="number" min="0" max="10">
           <h4>내용</h4>
-          <textarea v-model="newReview.content" class="form-control" name="" id="" cols="30" rows="10"></textarea><br>
+          <textarea @keyup.enter="createForm(newReview)" v-model="newReview.content" class="form-control" name="" id="" cols="30" rows="10"></textarea><br>
           <button @click="createForm(newReview)" class="form-control">제출하기</button>
+          {{ newReview }}
         </form>
       </div>
     

@@ -60,7 +60,7 @@ def review_list_or_create(request, movie_pk):
         user = request.user
         serializer = ReviewSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(user=user)
+            serializer.save(user=user, movie_id=movie_pk)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     if request.method == 'GET':
