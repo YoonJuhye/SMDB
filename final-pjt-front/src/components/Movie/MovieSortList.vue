@@ -1,8 +1,8 @@
 <template>
   <div style="padding-top:30px;">
     <div class="d-flex">
-       <h3 class="d-flex">장르별 정렬</h3>
-        <div class="mx-3">
+       <h3 class="sort-title mx-3 d-flex">장르별 추천</h3>
+        <div class="sort-tap mx-3">
           <button @click="sort('all')" class="selectbutton leftbutton">전체</button>
           <button @click="sort(28)" class="selectbutton">액션</button>
           <button @click="sort(10749)" class="selectbutton">로맨스</button>
@@ -13,7 +13,6 @@
     <div class="slimscroll" id="sorted">
       <movie-list-item class="my-3" style="display: inline-block;" v-for="movie in sorted" :key="movie.pk" :movie="movie" />
     </div>
-    
   </div>
 </template>
 
@@ -40,6 +39,17 @@ export default {
 </script>
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.sort-title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+}
+
+.sort-tap {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 .selectbutton {
   background-color: #d1d1f0;
   overflow: auto;

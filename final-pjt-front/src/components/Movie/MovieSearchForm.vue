@@ -41,7 +41,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 #searchButton {
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #6441A5 40%, 
                 #2a0845 100%);
     border-radius: 20px;
@@ -50,6 +53,7 @@ export default {
     
 }
 #searchInput {
+    font-family: 'Poppins', sans-serif;
     border-radius: 20px;
     border: solid 1px;
     margin-right: -30px;
@@ -58,11 +62,13 @@ export default {
 }
 #searchForm {
     background-color: rgba(216, 214, 226, 0.301);
-    background-image: url(../../assets/login.png);
+    background-image: url(../../assets/search-back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 #maintext {
+  color: white;
+  font-family: 'Poppins', sans-serif;
   padding-left: 70px;
   padding-top: 60px;
   margin-left: 180;

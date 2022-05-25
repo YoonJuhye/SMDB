@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h3 class="d-flex mx-3 my-3">인기 영화</h3>
+      <h3 class="popular-title d-flex mx-3 my-3">인기 영화</h3>
       <div class="slimscroll" id='popular'>
         <movie-list-item style="display: inline-block;" v-for="movie in movies" :key="movie.pk" :movie="movie" />
       </div>
@@ -30,6 +30,13 @@ export default {
 </script>
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.popular-title {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+}
+
 #popular {
   overflow-x: scroll;
   overflow-y: hidden;
