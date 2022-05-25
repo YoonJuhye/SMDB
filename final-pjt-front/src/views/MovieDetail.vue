@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5">
+  <div class="all-detail my-5">
       <div class="d-flex detailblock">
         <img v-if="movie.poster_path" class="card-img col-5" style="width:300px; border-radius: 20px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
         <div class="card-body col-5 my-1">
@@ -19,7 +19,7 @@
            <p class="my-1 mx-3 overview slimscroll">{{ movie.overview }}</p>
            <div class="d-flex mx-2 my-3">
             <button class="likebutton" v-if="isLike==false" @click="iLike"><font-awesome-icon class="fa-2x" style="color:rgb(111, 112, 111);" icon="fa-solid fa-thumbs-up"></font-awesome-icon></button>
-            <button class="likebutton" v-if="isLike==true" @click="likecansle"><font-awesome-icon class="fa-2x" style="color:#7ab1f8;" icon="fa-solid fa-thumbs-up" /></button>
+            <button class="likebutton" v-if="isLike==true" @click="likecansle"><font-awesome-icon class="fa-2x" style="color:#7ab1f8;" icon="fa-solid fa-thumbs-up" beat /></button>
             <h5 class="my-3 mx-3">{{ this.$store.state.movies.likes }} 명이 이 영화를 좋아합니다.</h5>
            </div>
            
@@ -72,6 +72,11 @@ export default {
 </script>
 
 <style>
+
+.all-detail {
+  padding: 0 50px 0 50px;
+}
+
 .vote_ave {
   background-color: #7ab1f8;
   border-radius: 10px;

@@ -18,7 +18,7 @@
       </div>
     </nav>
     
-    <router-view class="mx-5" id="view" :key="$route.fullPath" />
+    <router-view class="" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center justify-content-center">
       <div class="container">
@@ -110,6 +110,7 @@ html,body{
 }
 footer {
   padding: 0;
+  margin: 0;
   text-align: center;
   background: #292961;
   height: 80px;

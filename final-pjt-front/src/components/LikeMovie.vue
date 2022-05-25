@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div class="my-3 likecard d-flex align-items-center justify-content-between">
-          <img @click="goDetail" style="width:70px; border-radius: 10px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`' alt="#">
-          <h3 @click="goDetail" class="mx-5">{{ movie.title }}</h3>
+      <div class="my-3 likecard d-flex flex-column align-items-center justify-content-between" style="width:200px; height:400px;">
+          <img @click="goDetail" class="likeimg" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`' alt="#">
+          <h6 class="mx-2 liketitle text-center">{{ movie.title }}</h6>
           <button @click="deletebutton" class="mx-3 btn-close"></button>
       </div>
   </div>
@@ -37,6 +37,19 @@ export default {
 .likecard {
     border: solid 1px;
     border-radius: 10px;
-    width: 500px;
+    -webkit-box-shadow: -9px -16px 36px 0px rgba(99,110,168,1);
+    -moz-box-shadow: -9px -16px 36px 0px rgba(99,110,168,1);
+    box-shadow: -9px -16px 36px 0px rgba(99,110,168,1);
+}
+.liketitle{
+    display: inherit;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+}
+.likeimg{
+    width:200px;
+    height: 300px;
+    object-fit: cover; 
+    border-radius: 10px 10px 0 0;
 }
 </style>

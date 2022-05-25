@@ -8,7 +8,7 @@ export default {
     state:{
         reviews:[],
         comments:[],
-        rank:[],
+        rank:0,
     },
     getters:{
     },
@@ -42,10 +42,14 @@ export default {
             })
             .then(res => {
                 let average = 0
-                for (const review of res.data) {
+                if (res.data.length > 0) {
+                    for (const review of res.data) {
                     average = average + review.rank
                 }
-                commit('SET_RANK',(average/3).toFixed(1))
+                commit('SET_RANK',(average/res.data.length).toFixed(1))
+                } else {
+                    commit('SET_RANK',(0).toFixed(1))
+                }
                 commit('SET_REVIEW',res.data)
             })
             .catch(err => console.error(err.response))

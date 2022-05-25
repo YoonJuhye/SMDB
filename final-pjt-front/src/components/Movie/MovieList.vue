@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="all-popular">
       <h3 class="popular-title d-flex mx-3 my-3">인기 영화</h3>
       <div class="slimscroll" id='popular'>
         <movie-list-item style="display: inline-block;" v-for="movie in movies" :key="movie.pk" :movie="movie" />
       </div>
-      
   </div>
 </template>
 
@@ -31,6 +30,11 @@ export default {
 
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+.all-popular {
+  padding: 0 50px 0 50px;
+}
 
 .popular-title {
   font-family: "Noto Sans KR", sans-serif;

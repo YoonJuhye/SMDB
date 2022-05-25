@@ -1,36 +1,33 @@
 <template>
   <div class="card" id="reviewCard">
     <div class="d-flex justify-content-around mx-3 my-4" v-if="isModal==false">
+      
       <div class="col-6">
         <h3 id="reviewtitle">{{ review.title }}</h3>
-        
         <p class="my-3" id="reviewContent">{{ review.content }}</p>
-
       </div>
-      <div class="card mx-2 col-3">
-        <img src="../../assets/people.png" alt="#">
+
+      <div class="card mx-2 col-2 profilecard">
+        <img class="imgsize" src="../../assets/people.png" alt="#">
         <div class="d-flex justify-content-around">
           <h3>{{ review.user.username }} <span class="badge bg-secondary">{{ review.rank }}점</span></h3>
-        </div>
-              
+        </div>        
       </div>
-      <div class="col-2 d-flex">
-        
 
+
+      <div class="col-2 d-flex profilecard">
         <div class="d-flex flex-column justify-content-between">
           <div>
-            <div>
+            <div class="my-3">
               <label>게시일</label>
               <p>{{ review.created_at | moment('YYYY-MM-DD HH:mm')}}</p>
             </div>
     
-            <div>
+            <div class="my-3">
               <label>수정일</label>
               <p>{{ review.updated_at | moment('YYYY-MM-DD HH:mm')}}</p>
             </div>
           </div>
-          
-
             <div class="d-flex" v-if="this.$store.state.accounts.currentUser.username == review.user.username">
               <button style="background-color:rgba(190, 255, 255, 0.767);" @click="isModal=true" id="updelbutton">UPDATE</button>
               <button style="background-color:rgb(255, 175, 175);" @click="deleteReview(review)" id="updelbutton">DELETE</button>
@@ -134,7 +131,15 @@ export default {
   border: solid 1px rgb(106, 185, 250);
   border-radius: 10px;
 
-  height: 150px;
+  height: 250px;
   padding: 10px;
+}
+.profilecard{
+  align-self: center;
+}
+.imgsize{
+  display:block;
+	width:100%;
+	height:auto;
 }
 </style>

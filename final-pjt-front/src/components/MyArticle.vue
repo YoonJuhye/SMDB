@@ -1,9 +1,9 @@
 <template>
-    <tr @click="clicktable">
-      <th>{{ review.movie.title }}</th>
-      <th>{{ review.title }}</th>
-      <th>{{ review.created_at | moment('YYYY년 MM월 DD일 HH시 mm분')}}</th>
-    </tr>
+    <div @click="clicktable" class="d-flex justify-content-around">
+      <h5 class="text-center overtext">{{ review.movie.title }}</h5>
+      <h5 class="text-center overtext">{{ review.title }}</h5>
+      <h5 class="text-center overtext">{{ review.created_at | moment('YYYY년 MM월 DD일 HH시 mm분')}}</h5>
+    </div>
  
 </template>
 
@@ -25,5 +25,9 @@ export default {
 </script>
 
 <style>
-
+.overtext {
+  width: 500px;
+  display: inline;
+  overflow: hidden;
+}
 </style>
