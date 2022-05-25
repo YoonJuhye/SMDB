@@ -6,17 +6,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Genre(models.Model):
     name = models.CharField(max_length=50)
 
-# class Platform(models.Model):
-#     neflix = models.BooleanField()
-#     watcha = models.BooleanField()
-#     disney = models.BooleanField()
-
-# class Video(models.Model):
 
 class Movie(models.Model):
     genre_ids=models.ManyToManyField(Genre)
-    # casts=models.ManyToManyField(Cast, related_name='movies')
-    # crews=models.ManyToManyField(Crew, related_name='movies')
     title = models.CharField(max_length=100)
     overview = models.TextField()
     vote_average = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
@@ -27,17 +19,6 @@ class Movie(models.Model):
     video = models.BooleanField()
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
-class Cast(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE,null=True)
-    name = models.TextField()
-    character = models.TextField(null=True)
-    # profile_path = models.TextField()
-
-
-class Crew(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True)
-    name = models.TextField()
-    job = models.TextField(null=True)
 
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')

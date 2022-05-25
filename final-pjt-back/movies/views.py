@@ -2,8 +2,8 @@ from django.shortcuts import get_list_or_404, render, get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Genre, Cast, Crew, Movie, Review, Comment
-from .serializers import CastSerializer, CrewSerializer, MovieSerializer, ReviewSerializer, CommentSerializer
+from .models import Genre, Movie, Review, Comment
+from .serializers import MovieSerializer, ReviewSerializer, CommentSerializer
 from django.db.models import Count
 
 # Create your views here.
@@ -39,15 +39,6 @@ def movie_detail(request, movie_pk):
             return Response(serializer.data)
 
 
-def cast_list(request):
-    casts = get_list_or_404(Cast)
-    serializer = CastSerializer(casts, many=True)
-    return Response(serializer.data)
-
-def crew_list(request):
-    crews = get_list_or_404(Crew)
-    serializer = CrewSerializer(crews, many=True)
-    return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
 def review_list_or_create(request, movie_pk):

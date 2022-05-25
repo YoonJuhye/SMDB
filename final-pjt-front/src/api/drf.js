@@ -16,8 +16,10 @@ export default {
     signup: () => HOST + ACCOUNTS + 'signup/',
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
     profile: username => HOST + ACCOUNTS + PROFILE + `${username}/`,
+    getProfileimg: username => HOST + ACCOUNTS + 'profileimg/'+`${username}/`,
+    saveProfileimg: user_pk => HOST + ACCOUNTS + 'profileimg/'+`${user_pk}/` + 'save/',
   },
-  movies:{
+  movies:{  
     movies: () => HOST + MOVIES,
     movie_detail: movie_pk => HOST+MOVIES+`${movie_pk}/`,
     search: keyword => HOST+MOVIES+SEARCH+`${keyword}/`,

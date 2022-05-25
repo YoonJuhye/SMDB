@@ -9,6 +9,7 @@ export default {
     currentUser: {},
     profile: {},
     authError: null,
+    profileImg: null,
   },
   getters: {
     isLoggedIn: state => !!state.token,
@@ -22,7 +23,8 @@ export default {
     SET_TOKEN: (state, token) => state.token = token,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
     SET_PROFILE: (state, profile) => state.profile = profile,
-    SET_AUTH_ERROR: (state, error) => state.authError = error
+    SET_AUTH_ERROR: (state, error) => state.authError = error,
+    SET_PROFILEIMG: (state,url) => state.profileImg = url
   },
 
   actions: {
@@ -96,7 +98,11 @@ export default {
           method: 'get',
           headers: getters.authHeader,
         })
-          .then(res => commit('SET_CURRENT_USER', res.data))
+          .then(res => {
+            console.log(res.data)
+            dispatch('profileimg', res.data.username)
+            commit('SET_CURRENT_USER', res.data)
+          })
           .catch(err => {
             if (err.response.status === 401) {
               dispatch('removeToken')
@@ -114,9 +120,41 @@ export default {
         .then(res => {
           commit('SET_PROFILE', res.data)
         })
+        .catch(err => {
+          console.error(err.response.data)
+        })
     },
     cleanError({ commit }) {
       commit('SET_AUTH_ERROR', null)
+    },
+    profileimg({ commit,getters }, username) {
+      axios({
+        url: drf.accounts.getProfileimg(username),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+      .then(res => {
+        console.log(res.data.image_poster)
+        commit('SET_PROFILEIMG',res.data.image_poster)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    },
+    chageProfileImg({ getters }, img) {
+      axios({
+        url: drf.accounts.saveProfileimg(img.user_pk),
+        method: 'post',
+        data: img.profile,
+        headers: getters.authHeader,
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
     }
-  }
+  },
+  
 }
