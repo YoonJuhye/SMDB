@@ -48,8 +48,8 @@
           <label>내용</label>
           <input class="form-control my-2" type="text" v-model="upReview.content">
           <div class="d-flex justify-content-end">
-              <button class="btn btn-info" @click="updateButton(upReview)">수정하기</button>
-            <button class="btn btn-danger" @click="isModal=false">취소</button>
+              <button style="background-color:rgba(190, 255, 255, 0.767);" id="updelbutton" @click="updateButton(upReview)">수정하기</button>
+            <button style="background-color:rgb(255, 175, 175);" id="updelbutton" @click="isModal=false">취소</button>
           </div>
         </div>
       </div>

@@ -11,7 +11,9 @@ export default {
         movieDetail:[],
         sorted:[],
         movie_pk:'',
-
+        likes : '',
+        isLike: '',
+        myarticle :[],
     },
     getters:{
         movies: state => state.movies,
@@ -31,6 +33,8 @@ export default {
         },
         SET_SORT: (state,genre) => state.sorted = genre,
         SET_MOVIEPK: (state, pk) => state.movie_pk = pk,
+        SET_LIKES : (state, data) => state.likes = data.length,
+        SET_MYARTICLE: (state,data) => state.myarticle = data
     },
     actions:{
         search({ commit,getters }, keyword) {
@@ -77,7 +81,8 @@ export default {
             .then(res => {
                 commit('SET_MOVIEPK', movie_pk)
                 commit('SET_DETAIL', res.data)
-
+                commit('SET_isLike', res.data.like)
+                commit('SET_LIKES', res.data.like_users)
                 router.push({ name:'Detail' })
             })
             .catch(err => console.error(err.response))
@@ -92,6 +97,32 @@ export default {
             .then(res => {
                 commit('SET_SORT', res.data)
             })
-        }
+            .catch(err => console.error(err.response))
+        },
+        like({ commit, getters }, movie_pk){
+            axios({
+                url: drf.movies.like(movie_pk),
+                method: 'post',
+                headers: getters.authHeader,
+              })
+            .then(res => {
+                console.log(res)
+                commit('SET_DETAIL', res.data)
+                commit('SET_LIKES',res.data.like_users)
+            })
+            .catch(err => console.error(err.response))
+        },
+        my_Review({ commit,getters }, myPK){
+            axios({
+                url: drf.movies.loadmyrivew(myPK),
+                method: 'get',
+                headers: getters.authHeader,
+              })
+            .then(res => {
+                commit('SET_MYARTICLE', res.data)
+
+            })
+            .catch(err => console.error(err.response))
+        },
     }
 }

@@ -13,6 +13,7 @@ export default {
   getters: {
     isLoggedIn: state => !!state.token,
     currentUser: state => state.currentUser,
+    profile: state => state.profile,
     authError: state => state.authError,
     authHeader: state => ({ Authorization: `Token ${state.token}`})
   },
@@ -20,6 +21,7 @@ export default {
   mutations: {
     SET_TOKEN: (state, token) => state.token = token,
     SET_CURRENT_USER: (state, user) => state.currentUser = user,
+    SET_PROFILE: (state, profile) => state.profile = profile,
     SET_AUTH_ERROR: (state, error) => state.authError = error
   },
 
@@ -101,16 +103,15 @@ export default {
           })
       }
     },
-  }
-  //   fetchProfile({ commit, getters }, { username }) {
-  //     axios({
-  //       url: drf.accounts.profile(username),
-  //       method: 'get',
-  //       headers: getters.authHeader,
-  //     })
-  //       .then(res => {
-  //         commit('SET_PROFILE', res.data)
-  //       })
-  //   },
-  // },
+    fetchProfile({ commit, getters }, username) {
+      axios({
+        url: drf.accounts.profile(username),
+        method: 'get',
+        headers: getters.authHeader,
+      })
+        .then(res => {
+          commit('SET_PROFILE', res.data)
+        })
+    },
+  },
 }

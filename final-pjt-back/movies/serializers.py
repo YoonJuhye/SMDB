@@ -35,12 +35,20 @@ class MovieListSerializer(serializers.ModelSerializer):
         fields = ('title', 'vote_average',)
 
 class MovieSerializer(serializers.ModelSerializer):
+    
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ('pk', 'username')
+    
+    
     class GenreSerializer(serializers.ModelSerializer):
     
         class Meta:
             model = Genre
             fields = '__all__'
 
+    like_users = UserSerializer(read_only=True, many=True)
     genre_ids=GenreSerializer(many=True)
 
     class Meta:
@@ -67,7 +75,11 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ('review', )
 
 class ReviewSerializer(serializers.ModelSerializer):
-    
+    class MovieS(serializers.ModelSerializer):
+        class Meta:
+            model = Movie
+            fields = ('title',)
+
     class UserSerializer(serializers.ModelSerializer):
         class Meta:
             model = User
@@ -75,6 +87,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     comments = CommentSerializer(many=True, read_only=True)
     user = UserSerializer(read_only=True)
+    movie = MovieS(read_only=True)
     # like_users = UserSerializer(read_only=True, many=True)
 
     class Meta:

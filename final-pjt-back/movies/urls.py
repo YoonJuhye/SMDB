@@ -14,7 +14,9 @@ urlpatterns = [
     path('cast/', views.cast_list),
     path('crew/', views.crew_list),
     path('search/<keyword>/', views.search_movies),
-    path('sort/<value>/', views.sort_list)
+    path('sort/<value>/', views.sort_list),
+    path('like/<movie_pk>/', views.like_movie),
+    path('myreview/', views.my_review),
 ]
 
 

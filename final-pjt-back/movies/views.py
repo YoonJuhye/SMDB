@@ -170,3 +170,10 @@ def like_movie(request, movie_pk):
         movie.like_users.add(user)
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def my_review(request):
+    user = request.user
+    reviews = Review.objects.filter(user=user)
+    serializer = ReviewSerializer(reviews, many=True)
+    return Response(serializer.data)

@@ -6,7 +6,7 @@ const REVIEW = 'review/'
 const SEARCH = 'search/'
 const SORT = 'sort/'
 const COMMENT = 'comments/'
-
+const PROFILE = 'profile/'
 
 
 export default {
@@ -15,12 +15,15 @@ export default {
     logout: () => HOST + ACCOUNTS + 'logout/',
     signup: () => HOST + ACCOUNTS + 'signup/',
     currentUserInfo: () => HOST + ACCOUNTS + 'user/',
+    profile: username => HOST + ACCOUNTS + PROFILE + `${username}/`,
   },
   movies:{
     movies: () => HOST + MOVIES,
     movie_detail: movie_pk => HOST+MOVIES+`${movie_pk}/`,
     search: keyword => HOST+MOVIES+SEARCH+`${keyword}/`,
-    sort: value => HOST +MOVIES+SORT+`${value}/`
+    sort: value => HOST +MOVIES+SORT+`${value}/`,
+    like: movie_pk => HOST + MOVIES + 'like/' + `${movie_pk}/`,
+    loadmyrivew: () => HOST + MOVIES + 'myreview/'
   },
   reviews:{
     reviews: movie_pk => HOST + MOVIES + `${movie_pk}/` + REVIEW,

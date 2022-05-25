@@ -11,14 +11,19 @@
               <h5 class="vote_ave text-center">{{ movie.vote_average }}</h5>
               <p class="date" style="padding-top:10px;">개봉일 : {{ movie.release_date }}</p>
             </div>
-  
-            
+
           </div>
-          
+
           <div class="my-4 mx-3 ">
             <span class="mx-2" id="genre" v-for="genre in movie.genre_ids" :key="genre.pk">{{ genre.name }}</span>
           </div>
            <p class="my-1 mx-3 overview slimscroll">{{ movie.overview }}</p>
+           <div class="mx-4 my-3">
+            <h5>{{ this.$store.state.movies.likes }} 명이 이 영화를 좋아합니다.</h5>
+            <button v-if="isLike==false" @click="iLike"> 좋아요 </button>
+            <button v-if="isLike==true" @click="likecansle"> 좋아요취소 </button>
+           </div>
+           
         </div>
       </div>
        <hr>
@@ -39,14 +44,29 @@ export default {
   data () {
     return{
       movie:[],
+      isLike: false,
     }
   },
   methods:{
-    ...mapActions(['loadReview'])
+    ...mapActions(['loadReview','like']),
+    iLike:function () {
+      this.isLike = true
+      this.like(this.movie.id)
+    },
+    likecansle:function (){
+      this.isLike = false
+      this.like(this.movie.id)
+    }
   },
   created : function () {
     this.movie = this.$store.state.movies.movieDetail
     this.loadReview(this.movie.id)
+    for (const likeuser of this.movie.like_users) {
+      if (this.$store.state.accounts.currentUser.username == likeuser.username) {
+        this.isLike = true
+      }
+    }
+    
   },
 
   }

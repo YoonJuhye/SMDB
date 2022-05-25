@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 from movies.models import Movie
 
 class ProfileSerializer(serializers.ModelSerializer):
-
     class MovieSerializer(serializers.ModelSerializer):
         
         class Meta:
@@ -11,9 +10,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             fields = ('pk', 'title', 'poster_path')
 
     like_movies = MovieSerializer(many=True)
-    movies = MovieSerializer(many=True)
 
     class Meta:
         model = get_user_model()
-        fields = ('pk', 'username', 'email', 'like_movies', 'movies',)
+        fields = ('pk', 'username', 'email', 'like_movies',)
 

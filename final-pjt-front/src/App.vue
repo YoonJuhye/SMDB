@@ -30,9 +30,9 @@
           <div class="column-xs-12">
             <ul class="social">
               <li>  
-                <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
+                <!-- <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
                 <span><font-awesome-icon icon="fa-brands fa-github"/></span>
-                </a>
+                </a> -->
                 </li>
             </ul>
             <p class="copyright">&copy; Copyright haengsong & juhye</p>
