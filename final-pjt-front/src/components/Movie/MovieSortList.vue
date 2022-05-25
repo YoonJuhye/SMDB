@@ -7,6 +7,7 @@
           <button @click="sort(28)" class="selectbutton">액션</button>
           <button @click="sort(10749)" class="selectbutton">로맨스</button>
           <button @click="sort(16)" class="selectbutton">애니메이션</button>
+          <button @click="sort(27)" class="selectbutton">공포</button>
           <button @click="sort(35)" class="selectbutton rightbutton">코미디</button>
         </div>
     </div>

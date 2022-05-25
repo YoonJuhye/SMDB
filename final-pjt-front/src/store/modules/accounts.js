@@ -47,6 +47,7 @@ export default {
           const token = res.data.key
           dispatch('saveToken', token)
           dispatch('fetchCurrentUser')
+          commit('SET_AUTH_ERROR', null)
           router.push({ name: 'home' })
         })
         .catch(err => {
@@ -114,5 +115,8 @@ export default {
           commit('SET_PROFILE', res.data)
         })
     },
-  },
+    cleanError({ commit }) {
+      commit('SET_AUTH_ERROR', null)
+    }
+  }
 }

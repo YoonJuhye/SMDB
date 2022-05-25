@@ -100,12 +100,16 @@ nav a.router-link-exact-active {
 #view {
   margin-top:20px;
   padding-bottom: 80px;
-  min-height: 1200px;
+  height: 100%;
   position: relative;
 }
-
+html,body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 footer {
-  padding: 1rem 0;
+  padding: 0;
   text-align: center;
   background: #292961;
   height: 80px;

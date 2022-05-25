@@ -50,12 +50,14 @@ export default {
     },
 
     methods: {
-      ...mapActions(['signup'])
+      ...mapActions(['signup','cleanError'])
     },
     computed: {
-      ...mapGetters(['authError'])
+      ...mapGetters(['authError']),
     },
-
+    created () {
+      this.cleanError()
+    }
 }
 </script>
 

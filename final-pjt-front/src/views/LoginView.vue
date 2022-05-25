@@ -37,11 +37,14 @@ export default {
       }
     },
     methods: {
-      ...mapActions(['login'])
+      ...mapActions(['login','cleanError'])
     },
     computed: {
       ...mapGetters(['authError'])
     },
+    created () {
+      this.cleanError()
+    }
 }
 </script>
 
