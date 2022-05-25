@@ -7,13 +7,14 @@
     
     <div class="col-12 d-flex justify-content-center" style="padding-top:30px;">
         <input v-model="keyword" class="col-10" type="text" id="searchInput" placeholder="영화를 검색하세요." aria-label="영화를 검색하세요." aria-describedby="searchButton">
-        <button @click="search(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
+        <button @click="searchRequest(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
     
   </div>
 </template>
 
 <script>
+import router from '@/router'
 import { mapActions } from 'vuex'
 
 
@@ -25,7 +26,15 @@ export default {
     }
   },
   methods: {
-      ...mapActions(['search'])
+      ...mapActions(['search']),
+      searchRequest: function (keyword) {
+        if (this.$store.state.accounts.currentUser) {
+          this.search(keyword)
+        } else {
+          alert('로그인을 해주세요!')
+          router.push({ name:'login' })
+        }
+      }
     },
 
 }

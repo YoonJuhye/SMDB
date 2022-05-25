@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import router from '@/router'
 import { mapActions } from 'vuex'
 
 export default {
@@ -21,12 +22,18 @@ export default {
     methods:{
         ...mapActions(['movieDetail','loadReview']),
         moviebutton: function () {
-            this.loadReview(this.movie.id)
-            this.movieDetail(this.movie.id)
+            if (this.$store.state.accounts.currentUser) {
+                this.loadReview(this.movie.id)
+                this.movieDetail(this.movie.id)
+            } else {
+            alert('로그인을 해주세요!')
+            router.push({ name:'login' })
+            }
+        }
         }
     }
 
-}
+
 </script>
 
 <style>

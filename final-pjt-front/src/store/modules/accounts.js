@@ -33,6 +33,7 @@ export default {
 
     removeToken({ commit }) {
       commit('SET_TOKEN', '')
+      commit('SET_CURRENT_USER','')
       localStorage.setItem('token', '')
     },
 
