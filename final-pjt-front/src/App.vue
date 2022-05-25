@@ -24,9 +24,9 @@
       <div class="container">
           <div class="align-">
                 <a href="https://github.com/haengsong/MovieProject" target="_blank" rel="noopener noreferrer">
-                <img alt="ssafy logo" src="./assets/git.png" style="height:30px;">
+                <img class="mt-3" alt="ssafy logo" src="./assets/git.png" style="height:30px;">
                 </a>
-            <p class="copyright">&copy; Copyright haengsong & juhye</p>
+            <p class="copyright mt-1">&copy; Copyright haengsong & juhye</p>
           </div>
       </div>
     </footer>
@@ -99,8 +99,20 @@ nav a.router-link-exact-active {
 }
 #view {
   margin-top:20px;
-  padding-bottom: 60px;
+  padding-bottom: 80px;
   min-height: 1200px;
+  position: relative;
+}
+
+footer {
+  padding: 1rem 0;
+  text-align: center;
+  background: #292961;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #d1d1f0;
 }
 
 .social, .copyright {
@@ -109,18 +121,6 @@ nav a.router-link-exact-active {
 
 .social li {
   display: inline-block;
-}
-
-footer {
-  padding: 1rem 0;
-  text-align: center;
-  background: #292961;
-  height: 100px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  color: #d1d1f0;
-  
 }
 
 .SMDB {

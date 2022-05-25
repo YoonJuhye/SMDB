@@ -1,5 +1,5 @@
 <template>
-    <div @click="moviebutton" class="card mx-3" style="width:200px; height:340px;">
+    <div @click="moviebutton" class="card border-light mx-3" style="width:200px; height:340px;">
         <img class="card-header card-img-top" style="width:200px; height:250px; padding:0;"  :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`' alt="#">
         <div class="card-body">
             <p class="card-title" style="width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"> {{ movie.title }} </p>
@@ -37,4 +37,7 @@ export default {
 </script>
 
 <style>
+.card {
+    box-shadow: 3px 3px 10px grey;
+}
 </style>
