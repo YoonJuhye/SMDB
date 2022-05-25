@@ -1,5 +1,5 @@
 <template>
-  <div class="my-5">
+  <div class="all-detail my-5">
       <div class="d-flex detailblock">
         <img v-if="movie.poster_path" class="card-img col-5" style="width:300px; border-radius: 20px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
         <div class="card-body col-5 my-1">
@@ -72,6 +72,11 @@ export default {
 </script>
 
 <style>
+
+.all-detail {
+  padding: 0 50px 0 50px;
+}
+
 .vote_ave {
   background-color: #7ab1f8;
   border-radius: 10px;

@@ -18,7 +18,7 @@
       </div>
     </nav>
     
-    <router-view class="mx-5" id="view" :key="$route.fullPath" />
+    <router-view class="" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center justify-content-center">
       <div class="container">
@@ -100,7 +100,7 @@ nav a.router-link-exact-active {
 #view {
   margin-top:20px;
   padding-bottom: 80px;
-  min-height: 1200px;
+  min-height: 500px;
   position: relative;
 }
 

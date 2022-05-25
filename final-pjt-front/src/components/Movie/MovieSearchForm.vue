@@ -60,7 +60,9 @@ export default {
     outline: none;
     padding: 10px 20px;
 }
+
 #searchForm {
+    padding: 0 50px 0 50px;
     background-color: rgba(216, 214, 226, 0.301);
     background-image: url(../../assets/search-back.jpg);
     background-repeat: no-repeat;

@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top:30px;">
+  <div class="all-sort" style="padding-top:30px;">
     <div class="d-flex">
        <h3 class="sort-title mx-3 d-flex">장르별 추천</h3>
         <div class="sort-tap mx-3">
@@ -40,6 +40,11 @@ export default {
 
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.all-sort {
+  padding: 0 50px 0 50px;
+}
+
 
 .sort-title {
   font-family: "Noto Sans KR", sans-serif;

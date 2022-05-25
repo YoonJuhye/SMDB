@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all-mypage">
         <div class="box">
           <h1 class="mx-5 my-5">내가 좋아하는 영화</h1>
           <like-movie class="mx-5 my-5" v-for="movie in this.$store.state.accounts.profile.like_movies" :key="movie.pk" :movie="movie" />
@@ -72,6 +72,11 @@ export default {
 </script>
 
 <style>
+
+.all-mypage {
+  padding: 0 50px 0 50px;
+}
+
 .box {
     border : solid 1px;
     border-radius: 10px;

@@ -25,5 +25,7 @@
 <style>
   .account-error-list {
     color: red;
+    margin-top: 1rem;
+    margin-left: 2rem;
   }
 </style>
