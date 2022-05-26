@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div v-if="isModal==true" class="d-flex my-4" style="justify-content: center; margin:auto;">
-                <input v-model="imgurl" type="text" style="border-radius:10px;">
+                <input v-model="imgurl" type="text" placeholder="이미지 URL을 입력해주세요." style="border-radius:10px;">
                 <button class="imgbutton" style="margin:0;" @click="changeImg">변경하기</button>
                 <button class="imgbutton" style="margin:0;" @click="profileButton">취소</button>
             </div>
@@ -155,7 +155,7 @@ export default {
     box-shadow: inset 0px 0px 3px white;
 }
 .articlebox {
-    background-color: rgb(195, 247, 247);
+    background-color: #f8f8fa;
     border-radius: 10px;
     padding: 10px 0px 10px 0px;
     color: rgb(0, 0, 0);
