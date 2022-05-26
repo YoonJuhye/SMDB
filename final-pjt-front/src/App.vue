@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <nav class="sticky-top d-flex justify-content-between p-2 align-items-center">
+    <nav class="d-flex justify-content-between p-2 align-items-center">
       <div>
         <a class="SMDB text-decoration-none" href="/">
-          <img alt="ssafy logo" src="./assets/SMDB.png" style="height:70px;">
+          <img class="mx-5" alt="ssafy logo" src="./assets/SMDB_blue.png" style="height:70px;">
         </a>
       </div>
       
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center mx-4">
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
         <router-link to="/mypage/" class="text-decoration-none mx-2">마이페이지</router-link>
-        <router-link v-if="login" to="/logout" class="text-decoration-none mx-2" style="color:#d1d1f0;">로그아웃</router-link>
+        <router-link v-if="login" to="/logout" class="text-decoration-none mx-2" style="color:#292961;">로그아웃</router-link>
         <div v-else>
           <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
           <router-link to="/login" class="text-decoration-none mx-2">로그인</router-link>
@@ -63,7 +63,8 @@ export default {
 
 
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Poppins&display=swap');
+
 
 
 #app {
@@ -79,26 +80,30 @@ export default {
 }
 
 nav {
-  background: #292961;
+  height: 70px;
+  background:none;
   padding: 30px;
+  color: #292961;
   
 }
 
 nav a {
   font-weight: bold;
-  color: #d1d1f0;
+  color: #292961;
+  z-index: 1;
 }
 
 nav a.router-link-exact-active {
-  background-color: white;
-  color: #292961;
+  background-color: #292961;
+  color: white;
   border-radius: 10px;
   padding: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
 #view {
-  margin-top:20px;
+  /* margin-top:20px; */
   padding-bottom: 80px;
   height: 100%;
   position: relative;

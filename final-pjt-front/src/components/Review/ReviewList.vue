@@ -4,7 +4,7 @@
           <review-list-item class="my-5" v-for="review in this.$store.state.reviews.reviews" :key="review.pk" :review="review" />
       </div>
       <div v-else>
-          <h2 class="my-5">리뷰가 없어요~</h2>
+          <h2 class="tung my-5">첫번째 리뷰의 주인공이 되어 보세요.</h2>
       </div>
     
   </div>
@@ -28,4 +28,9 @@ export default {
 
 <style>
 
+.tung {
+    font-size: 20px;
+    text-align: center;
+    text-justify: center;
+}
 </style>

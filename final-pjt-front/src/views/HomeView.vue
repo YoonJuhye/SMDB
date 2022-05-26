@@ -1,6 +1,6 @@
 <template>
   <div>
-    <movie-search-form class="my-3" />
+    <movie-search-form class="" />
     <movie-list class="my-5" />
     <movie-sort-list class="my-5" />
   </div>
