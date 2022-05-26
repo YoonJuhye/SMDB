@@ -1,25 +1,25 @@
 <template>
     <div class="d-flex">
-        <div v-if="isCommentModal==false" class="comment-lst col-12 mx-2 my-2 d-flex justify-content-between" id="comments"> 
+        <div v-if="isCommentModal==false" class="comment-lst col-10 mx-2 my-2 d-flex justify-content-between" id="comments"> 
             <h5 class="mx-3 my-3">{{ comment.content }}</h5>
             <p style="margin-bottom:0;">{{ comment.user.username }}</p>
         </div>
             
         
             
-        <div v-if="isCommentModal==true" class="mx-3 my-3" id="upCommentID">
+        <div v-if="isCommentModal==true" class="comment-lst col-11 mx-2 my-2" id="upCommentID">
             <div>
                 <input type="text" class="form" id="updateForm" v-model="upComment.content">
             </div>
         </div>
 
-        <div class="align-items-center col-3" v-if="isCommentModal==false">
+        <div class="d-flex align-items-center" v-if="isCommentModal==false">
             <button class="updatebutton commentbutton" @click="updateCommentbutton" v-if="comment.user.username==this.$store.state.accounts.currentUser.username">수정</button>
             <button id="cancle" @click="deleteComment(comment)" v-if="comment.user.username==this.$store.state.accounts.currentUser.username" type="button" class="commentbutton">삭제</button>
         </div>
-        <div v-if="isCommentModal==true" style="padding:0;">
-            <button @click="updateComment(upComment)" class="updatebutton ">수정하기</button>
-            <button class="" id="cancle" @click="isCommentModal=false">취소</button>
+        <div class="d-flex align-items-center" v-if="isCommentModal==true" style="">
+            <button @click="updateComment(upComment)" class="updatebutton commentbutton">수정</button>
+            <button class="commentbutton" id="cancle" @click="isCommentModal=false">취소</button>
         </div>
         
     </div>

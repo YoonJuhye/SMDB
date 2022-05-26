@@ -14,7 +14,8 @@
               <h5 class="vote_ave text-center">{{ movie.vote_average }}</h5>
             </div>
           </div>
-           <p class="my-1 mx-3 overview slimscroll">{{ movie.overview }}</p>
+           <p v-if="movie.overview" class="my-1 mx-3 overview slimscroll">{{ movie.overview }}</p>
+           <p else class="my-1 mx-3 overview slimscroll">줄거리 정보가 존재하지 않습니다.</p>
            <div class="d-flex mx-2">
             <button class="likebutton mb-1" v-if="isLike==false" @click="iLike"><font-awesome-icon class="fa-2x" style="color:white;" icon="fa-solid fa-thumbs-up"></font-awesome-icon></button>
             <button class="likebutton mb-1" v-if="isLike==true" @click="likecansle"><font-awesome-icon class="fa-2x" style="color:#007bff;" icon="fa-solid fa-thumbs-up" beat /></button>
