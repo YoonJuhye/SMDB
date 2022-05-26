@@ -131,8 +131,8 @@ export default {
 }
 
 #reviewCard{
-  border-radius: 10px;
-  border-left : thick solid #32a1ce;
+  border-radius: 0px;
+  /* border-left : thick solid #32a1ce; */
 }
 #updelbutton {
   height: 30px;
@@ -142,9 +142,9 @@ export default {
 }
 
 #reviewContent {
-  border: solid 1px rgb(106, 185, 250);
-  height: 200px;
+  border: solid 1px #5f0080;
   border-radius: 10px;
+  height: 200px;
   padding: 10px;
 }
 .profilecard{

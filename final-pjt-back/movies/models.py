@@ -12,11 +12,9 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     overview = models.TextField()
     vote_average = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)])
-    vote_count = models.IntegerField(null=True)
     popularity = models.FloatField(validators=[MinValueValidator(0)])
     release_date = models.TextField()
     poster_path = models.TextField()
-    video = models.BooleanField()
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies')
 
 

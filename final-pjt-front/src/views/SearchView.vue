@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-      <div class="d-flex" style="padding-top:30px;">
+      <div class="d-flex ms-4" style="padding-top:30px;">
         <input v-model="keyword" @keyup.enter="research(keyword)" class="col-10" type="text" id="searchInput" placeholder="영화를 검색하세요." aria-label="영화를 검색하세요." aria-describedby="searchButton">
         <button @click="research(keyword)" class="col-2 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
       </div>
