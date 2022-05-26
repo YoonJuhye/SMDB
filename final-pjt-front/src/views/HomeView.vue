@@ -22,7 +22,6 @@ export default {
     ...mapActions(['fetchCurrentUser'])
   },
   created: function(){
-    this.fetchCurrentUser()
   }
 }
 </script>
