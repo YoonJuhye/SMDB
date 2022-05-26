@@ -18,7 +18,7 @@
       </div>
     </nav>
     
-    <router-view class="" id="view" :key="$route.fullPath" />
+    <router-view class="my-5" id="view" :key="$route.fullPath" />
     
     <footer class="d-flex align-items-center justify-content-center">
       <div class="container">
