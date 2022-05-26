@@ -81,7 +81,6 @@ export default {
             .then(res => {
                 commit('SET_MOVIEPK', movie_pk)
                 commit('SET_DETAIL', res.data)
-                commit('SET_isLike', res.data.like)
                 commit('SET_LIKES', res.data.like_users)
                 router.push({ name:'Detail' })
             })
@@ -120,6 +119,7 @@ export default {
               })
             .then(res => {
                 commit('SET_MYARTICLE', res.data)
+                
 
             })
             .catch(err => console.error(err.response))
