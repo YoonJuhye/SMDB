@@ -1,14 +1,15 @@
 <template>
   <div class="card" id="reviewCard">
     <div class="d-flex justify-content-around mx-3 my-4" v-if="isModal==false">
-      
       <div class="col-6">
         <h3 id="reviewtitle">{{ review.title }}</h3>
         <p class="my-3" id="reviewContent">{{ review.content }}</p>
       </div>
-      
+
       <div class="card mx-2 col-2 profilecard">
-        <img class="imgsize" :src="this.$store.state.accounts.profile.profile_img">
+        <img v-if="Error==false" class="imgsize" :src="review.user.profile_img" @error="imgError">
+        <img v-else class="imgsize" src="../../assets/people.png">
+
         <div class="d-flex justify-content-around">
           <h3>{{ review.user.username }} <span class="badge bg-secondary">{{ review.rank }}점</span></h3>
         </div>        
@@ -88,6 +89,7 @@ export default {
                 rank : 0,
             },
       reviewComment:'',
+      Error:false
     }
   },
   props:{
@@ -103,7 +105,10 @@ export default {
     },
     commentClick() {
 
-    }
+    },
+    imgError: function(){
+            this.Error = true
+        }
   },
   created : function () {
     this.upReview = this.review

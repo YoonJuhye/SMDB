@@ -4,7 +4,6 @@
         <img v-if="movie.poster_path" class="card-img col-5" style="width:300px; border-radius: 20px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
         <div class="card-body col-5 my-1">
           <div class="my-3">
-
             <h2 class="card-title mx-2">{{ movie.title }} ({{ movie.release_date | moment('YYYY')}})</h2>
             <dir style="padding:5px;">
               <small class="mx-2" v-for="genre in movie.genre_ids" :key="genre.pk">{{ genre.name }}</small>

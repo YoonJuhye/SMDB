@@ -119,6 +119,7 @@ export default {
               })
             .then(res => {
                 commit('SET_MYARTICLE', res.data)
+                
 
             })
             .catch(err => console.error(err.response))

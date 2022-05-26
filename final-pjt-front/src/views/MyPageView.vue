@@ -104,15 +104,12 @@ export default {
         if (this.$store.state.accounts.currentUser) {
         this.profile.myname = this.$store.state.accounts.currentUser.username
         const myPk =this.$store.state.accounts.currentUser.pk
-        this.fetchProfile(this.profile.myname)
         this.profile = this.$store.state.accounts.profile
         this.my_Review(myPk)
         } else {
             alert('로그인을 해주세요!')
             router.push({ name: 'login' })
         }
-        
-    
     }
 }
 </script>

@@ -96,8 +96,8 @@ export default {
           method: 'get',
           headers: getters.authHeader,
         })
-          .then(res => {
-            console.log(res.data)
+          .then(res => {  
+            dispatch('fetchProfile',res.data.username)
             commit('SET_CURRENT_USER', res.data)
           })
           .catch(err => {
