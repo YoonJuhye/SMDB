@@ -1,11 +1,11 @@
 <template>
-  <div style="height:300px;" id="searchForm">
+  <div style="height:400px;" id="searchForm">
     <div id="maintext">
       <h1 class="welcome">Welcome.</h1>
       <h1 class="smdb">Ssafy Movie DB.</h1>
     </div>
     
-    <div class="col-12 d-flex justify-content-center" style="padding-top:30px;">
+    <div class="col-12 d-flex justify-content-center" style="padding-top:50px;">
         <input v-model="keyword" @keyup.enter="search(keyword)" class="col-10" type="text" id="searchInput" placeholder="영화를 검색하세요." aria-label="영화를 검색하세요." aria-describedby="searchButton">
         <button @click="searchRequest(keyword)" class="col-1 btn btn-outline-secondary fw-bold" type="button" id="searchButton">Search</button>
     </div>
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 #searchButton {
     font-family: 'Poppins', sans-serif;
@@ -72,7 +72,7 @@ export default {
   color: white;
   font-family: 'Poppins', sans-serif;
   padding-left: 70px;
-  padding-top: 60px;
+  padding-top: 100px;
   margin-left: 180;
 }
 .welcome {
