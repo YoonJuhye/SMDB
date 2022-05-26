@@ -4,22 +4,24 @@
             <h1 class="text-center">내 프로필</h1>
             <div class="d-flex justify-content-center">
                 <div class="card mx-2 col-2 profilecard">
-                    <img v-if="this.img.profile" src="../assets/people.png">
+                    <img v-if="Error==false" :src="profile.profile_img" @error="imgError">
                     <img v-else class="imgsize" src="../assets/people.png">
                     <div class="d-flex justify-content-around">
                         <button @click="profileButton">사진 변경</button>
                     </div>
                 </div>
             </div>
-
             <div v-if="isModal==true" class="d-flex my-4" style="justify-content: center; margin:auto;">
-                <input v-model="img.profile" type="text">
+                <input v-model="imgurl" type="text">
                 <button @click="changeImg">변경하기</button>
                 <button @click="profileButton">취소</button>
             </div>
         </div>
 
         <hr>
+
+
+
         <div class="box">
           <h1 class="mx-5 my-5 text-center underline">내가 좋아하는 영화</h1>
           <div class="d-flex slimscroll">
@@ -56,22 +58,23 @@ export default {
     data () {
         return {
             review:'',
-            myname:'',
             isModal:false,
-            img:{
-                profile:null,
-                user_pk:'',
+            profile:{
+                profile_img:null,
+                myname:'',
+            },
+            imgurl:'',
+            Error:false,
+            
             }
-        }
-    },
+        },
     components:{
         LikeMovie,MyArticle, ReviewListItem,
     },
     methods: {
-        ...mapActions(['fetchProfile','my_Review','chageProfileImg']),
+        ...mapActions(['fetchProfile','my_Review','saveProfile']),
         ...mapGetters(['isLoggedIn']),
         busSave : function(review) {
-            console.log(review)
             if (this.review.id == review.id) {
                 this.review = 0
             } else{
@@ -88,17 +91,21 @@ export default {
         },
         changeImg : function() {
             this.isModal = false
-            this.chageProfileImg(this.img)
+            this.profile.profile_img = this.imgurl
+            this.saveProfile(this.profile)
+            
 
+        },
+        imgError: function(){
+            this.Error = true
         }
     },
     created() {
         if (this.$store.state.accounts.currentUser) {
-        this.myname = this.$store.state.accounts.currentUser.username
+        this.profile.myname = this.$store.state.accounts.currentUser.username
         const myPk =this.$store.state.accounts.currentUser.pk
-        this.img.user_pk = myPk
-        this.img.profile =this.$store.state.accounts.profileImg
-        this.fetchProfile(this.myname)
+        this.fetchProfile(this.profile.myname)
+        this.profile = this.$store.state.accounts.profile
         this.my_Review(myPk)
         } else {
             alert('로그인을 해주세요!')

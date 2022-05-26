@@ -6,9 +6,9 @@
         <h3 id="reviewtitle">{{ review.title }}</h3>
         <p class="my-3" id="reviewContent">{{ review.content }}</p>
       </div>
-
+      
       <div class="card mx-2 col-2 profilecard">
-        <img class="imgsize" src="../../assets/people.png" alt="#">
+        <img class="imgsize" :src="this.$store.state.accounts.profile.profile_img">
         <div class="d-flex justify-content-around">
           <h3>{{ review.user.username }} <span class="badge bg-secondary">{{ review.rank }}점</span></h3>
         </div>        
