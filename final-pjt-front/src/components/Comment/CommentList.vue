@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex align-items-center">
-        <div v-if="isCommentModal==false" class="col-9 mx-2 my-2 d-flex justify-content-between" id="comments"> 
+        <div v-if="isCommentModal==false" class="col-12 mx-2 my-2 d-flex justify-content-between" id="comments"> 
             <h5 class="mx-3 my-3">{{ comment.content }}</h5>
             <p style="margin-bottom:0;">{{ comment.user.username }}</p>
         </div>

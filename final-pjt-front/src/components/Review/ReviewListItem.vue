@@ -1,18 +1,19 @@
 <template>
   <div class="card" id="reviewCard">
     <div class="d-flex justify-content-around mx-3 my-4" v-if="isModal==false">
-      <div class="col-6">
-        <h3 id="reviewtitle">{{ review.title }}</h3>
-        <p class="my-3" id="reviewContent">{{ review.content }}</p>
-      </div>
 
-      <div class="card mx-2 col-2 profilecard">
+      <div class="card mx-2 col-2 profilecard" style="margin-top:30px;">
         <img v-if="Error==false" class="imgsize" :src="review.user.profile_img" @error="imgError">
         <img v-else class="imgsize" src="../../assets/people.png">
 
         <div class="d-flex justify-content-around">
           <h3>{{ review.user.username }} <span class="badge bg-secondary">{{ review.rank }}점</span></h3>
         </div>        
+      </div>
+
+      <div class="col-6 my-5">
+        <h3 id="reviewtitle">{{ review.title }}</h3>
+        <p class="my-3" id="reviewContent">{{ review.content }}</p>
       </div>
 
 
@@ -55,7 +56,7 @@
       </div>
 
 
-       <details class="mx-5 my-3">
+       <details class="mx-5 my-3" style="padding-inline:450px;">
           <summary @click="commentClick">댓글 ({{ review.comments.length }})</summary>
             <div v-if="review.comments.length">
               <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
@@ -136,7 +137,7 @@ export default {
   border: solid 1px rgb(106, 185, 250);
   border-radius: 10px;
 
-  height: 250px;
+  height: 200px;
   padding: 10px;
 }
 .profilecard{
@@ -144,7 +145,6 @@ export default {
 }
 .imgsize{
   display:block;
-	width:100%;
 	height:auto;
 }
 </style>

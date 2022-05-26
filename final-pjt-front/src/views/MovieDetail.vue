@@ -26,7 +26,7 @@
         </div>
         <img v-if="movie.poster_path" class="card-img col-5" style="width:370px;" :src='`https://image.tmdb.org/t/p/w500/${movie.poster_path}`'>
       </div>
-    <review-form />
+    <review-form  />
   </div>
  
 </template>

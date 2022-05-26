@@ -1,20 +1,20 @@
 <template>
   <div class="all-mypage">
         <div class="box">
-            <h1 class="text-center">내 프로필</h1>
-            <div class="d-flex justify-content-center">
+            <h1 class="text-center underline">내 프로필</h1>
+            <div class="my-5 d-flex justify-content-center">
                 <div class="card mx-2 col-2 profilecard">
                     <img v-if="Error==false" :src="profile.profile_img" @error="imgError">
                     <img v-else class="imgsize" src="../assets/people.png">
                     <div class="d-flex justify-content-around">
-                        <button @click="profileButton">사진 변경</button>
+                        <button class="imgbutton" @click="profileButton">사진 변경</button>
                     </div>
                 </div>
             </div>
             <div v-if="isModal==true" class="d-flex my-4" style="justify-content: center; margin:auto;">
-                <input v-model="imgurl" type="text">
-                <button @click="changeImg">변경하기</button>
-                <button @click="profileButton">취소</button>
+                <input v-model="imgurl" type="text" style="border-radius:10px;">
+                <button class="imgbutton" style="margin:0;" @click="changeImg">변경하기</button>
+                <button class="imgbutton" style="margin:0;" @click="profileButton">취소</button>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
         </div>
         <hr>
         <div class="box">
-            <h1 class="mx-5 my-5 text-center">내가 쓴 글</h1>
+            <h1 class="mx-5 my-5 text-center underline">내가 쓴 글</h1>
             <review-list-item class="mx-5 my-5" v-if="review" :review="review" />
             <div class="d-flex justify-content-around">
                 <h3 class="text-center" style="width:500px;">영화</h3>
@@ -118,7 +118,6 @@ export default {
 .underline{
     text-decoration: underline;
     text-underline-position: under;
-    text-decoration-thickness : 1px
 }
 .all-mypage {
   padding: 0 50px 0 50px;
@@ -159,5 +158,11 @@ export default {
     border-radius: 10px;
     padding: 10px 0px 10px 0px;
     color: rgb(0, 0, 0);
+}
+.imgbutton{
+    border: none;
+    margin-block: 10px;
+    border-radius: 10px;
+    background-color: gainsboro;
 }
 </style>
