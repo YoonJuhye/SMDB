@@ -74,7 +74,7 @@ export default {
         })
     },
 
-    logout({ getters, dispatch }) {
+    logout({ getters, dispatch,commit }) {
       axios({
         url: drf.accounts.logout(),
         method: 'post',
@@ -82,7 +82,9 @@ export default {
       })
         .then(() => {
           dispatch('removeToken')
+          commit('SET_PROFILE',{})
           router.push({ name: 'home' })
+
         })
         .error(err => {
           console.error(err.response)
@@ -140,8 +142,8 @@ export default {
         .catch(err => {
           alert(err)
         })
-
     },
+
   },
   
 }

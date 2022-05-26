@@ -21,8 +21,5 @@ export default {
   methods:{
     ...mapActions(['fetchCurrentUser'])
   },
-  created: function(){
-    
-  }
 }
 </script>

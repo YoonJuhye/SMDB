@@ -51,7 +51,6 @@ import MyArticle from '../components/MyArticle.vue'
 import ReviewListItem from '@/components/Review/ReviewListItem.vue'
 
 import { mapActions,mapGetters } from 'vuex'
-import router from '@/router'
 
 export default {
     name:'MyPageView',
@@ -101,16 +100,12 @@ export default {
         }
     },
     created() {
-        if (this.$store.state.accounts.currentUser) {
         this.profile.myname = this.$store.state.accounts.currentUser.username
         const myPk =this.$store.state.accounts.currentUser.pk
         this.profile = this.$store.state.accounts.profile
         this.my_Review(myPk)
         this.fetchProfile(this.profile.username)
-        } else {
-            alert('로그인을 해주세요!')
-            router.push({ name:'login'})
-        }
+ 
     }
 }
 </script>

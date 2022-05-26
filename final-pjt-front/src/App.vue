@@ -9,7 +9,7 @@
       
       <div class="d-flex align-items-center mx-4">
         <router-link to="/" class="text-decoration-none mx-2">HOME</router-link>
-        <router-link to="/mypage/" class="text-decoration-none mx-2">마이페이지</router-link>
+        <router-link v-if="login" to="/mypage/" class="text-decoration-none mx-2">마이페이지</router-link>
         <router-link v-if="login" to="/logout" class="text-decoration-none mx-2" style="color:#292961;">로그아웃</router-link>
         <div v-else>
           <router-link to="/signup" class="text-decoration-none mx-2">회원가입</router-link>
