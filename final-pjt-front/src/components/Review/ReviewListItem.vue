@@ -1,8 +1,8 @@
 <template>
   <div class="card" id="reviewCard">
-    <div class="d-flex justify-content-around mx-3 my-4" v-if="isModal==false">
+    <div class="d-flex justify-content-around mx-3" v-if="isModal==false">
 
-      <div class="card mx-2 col-2 profilecard" style="margin-top:30px;">
+      <div class="card mx-2 col-2 profilecard" style="margin-block:30px;">
         <img v-if="Error==false" class="imgsize" :src="review.user.profile_img" @error="imgError">
         <img v-else class="imgsize" src="../../assets/people.png">
 
@@ -11,9 +11,18 @@
         </div>        
       </div>
 
-      <div class="col-6 my-5">
+      <div class="column col-6 my-5">
         <h3 id="reviewtitle">{{ review.title }}</h3>
         <p class="my-3" id="reviewContent">{{ review.content }}</p>
+        
+        <details class="mx-3 my-3">
+            <summary @click="commentClick">댓글 ({{ review.comments.length }})</summary>
+              <div v-if="review.comments.length">
+                <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
+              </div>
+              <h4 v-else class="my-3">댓글이 없어요~</h4>
+              <comment-form :reviewid="review.id" />
+          </details>
       </div>
 
 
@@ -47,7 +56,7 @@
           <label>내용</label>
           <input class="form-control my-2" type="text" v-model="upReview.content">
           <label>평가점수</label>
-          <input class="my-3 form-control" v-model="upReview.rank" type="number" min="0" max="10">
+          <input class="my-3 form-control" v-model="upReview.rank" type="number" min=0 max=10>
           <div class="d-flex justify-content-end">
               <button style="background-color:rgba(190, 255, 255, 0.767);" id="updelbutton" @click="updateButton(upReview)">수정하기</button>
             <button style="background-color:rgb(255, 175, 175);" id="updelbutton" @click="isModal=false">취소</button>
@@ -56,21 +65,12 @@
       </div>
 
 
-       <details class="mx-5 my-3" style="padding-inline:450px;">
-          <summary @click="commentClick">댓글 ({{ review.comments.length }})</summary>
-            <div v-if="review.comments.length">
-              <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
-            </div>
-            <h4 v-else class="my-3">댓글이 없어요~</h4>
-            <comment-form :reviewid="review.id" />
-        </details>
-
-
 
   </div>
 </template>
 
 <script>
+import router from '@/router'
 import { mapActions } from 'vuex'
 import CommentForm from '../Comment/CommentForm.vue'
 import CommentList from '../Comment/CommentList.vue'
@@ -101,8 +101,16 @@ export default {
   methods:{
     ...mapActions(['deleteReview','updateReview','loadComment']),
     updateButton(upReview) {
-      this.isModal=false
-      this.updateReview(upReview)
+      if (upReview.rank > 10 || upReview.rank < 0){
+        alert('0~10점까지만 입력해주세요.')
+        router.go()
+      }else{
+        this.isModal=false
+        this.updateReview(upReview)
+      }
+
+
+      
     },
     commentClick() {
 
@@ -135,9 +143,8 @@ export default {
 
 #reviewContent {
   border: solid 1px rgb(106, 185, 250);
-  border-radius: 10px;
-
   height: 200px;
+  border-radius: 10px;
   padding: 10px;
 }
 .profilecard{

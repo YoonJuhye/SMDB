@@ -1,10 +1,8 @@
 <template>
   <div class="all-detail">
       <div class="d-flex detailblock text-white bg-dark">
-        
         <div class="card-body col-5 my-1 ms-3 mt-3">
-          <div class="">
-
+          <div>
             <p class="card-title detail-title mx-2">{{ movie.title }} ({{ movie.release_date | moment('YYYY')}})</p>
             <dir style="padding:5px;">
               <span class="mx-2 genrename" v-for="genre in movie.genre_ids" :key="genre.pk">#{{ genre.name }}</span>
