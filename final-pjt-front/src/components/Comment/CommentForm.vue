@@ -36,6 +36,7 @@ export default {
 
 <style>
 .form {
+    
     border-radius: 10px;
     border: solid 1px;
     margin-right: 10px;
@@ -44,6 +45,7 @@ export default {
     padding-inline: 30px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(166, 220, 245);;
+    background-color: #292961;
+    color: white;
 }
 </style>
