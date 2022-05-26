@@ -10,7 +10,7 @@
           <h5>평점</h5>
           <input class="my-3 form-control" v-model="newReview.rank" type="number" min="0" max="10">
           <h5>내용</h5>
-          <textarea @keyup.enter="createForm(newReview)" v-model="newReview.content" class="form-control" cols="30" rows="5"></textarea><br>
+          <textarea v-model="newReview.content" class="form-control" cols="30" rows="5"></textarea><br>
           <button @click="createForm(newReview)" class="form-control">제출하기</button>
         </form>
 

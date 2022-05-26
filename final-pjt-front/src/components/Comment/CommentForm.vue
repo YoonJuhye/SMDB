@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex" style="padding-inline:10px;">
       <input @keyup.enter="createCommentbutton()" class="form" type="text" v-model="comment.content">
       <button class="button" @click="createCommentbutton()">작성</button>
   </div>
