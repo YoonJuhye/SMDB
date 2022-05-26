@@ -20,7 +20,7 @@
               <div v-if="review.comments.length">
                 <comment-list v-for="comment in review.comments" :key="comment.pk" :comment="comment" />
               </div>
-              <h4 v-else class="my-3">댓글이 없어요~</h4>
+              <h5 v-else class="my-3 ms-3">댓글을 작성해주세요.</h5>
               <comment-form :reviewid="review.id" />
           </details>
       </div>
@@ -40,8 +40,8 @@
             </div>
           </div>
             <div class="d-flex" v-if="this.$store.state.accounts.currentUser.username == review.user.username">
-              <button style="background-color:rgba(190, 255, 255, 0.767);" @click="isModal=true" id="updelbutton">UPDATE</button>
-              <button style="background-color:rgb(255, 175, 175);" @click="deleteReview(review)" id="updelbutton">DELETE</button>
+              <button @click="isModal=true" id="updelbutton">수정</button>
+              <button @click="deleteReview(review)" id="delbutton">삭제</button>
             </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
           <label>평가점수</label>
           <input class="my-3 form-control" v-model="upReview.rank" type="number" min=0 max=10>
           <div class="d-flex justify-content-end">
-              <button style="background-color:rgba(190, 255, 255, 0.767);" id="updelbutton" @click="updateButton(upReview)">수정하기</button>
+              <button id="updelbutton" @click="updateButton(upReview)">수정하기</button>
             <button style="background-color:rgb(255, 175, 175);" id="updelbutton" @click="isModal=false">취소</button>
           </div>
         </div>
@@ -135,9 +135,17 @@ export default {
   /* border-left : thick solid #32a1ce; */
 }
 #updelbutton {
-  height: 30px;
-  align-self: center;
-  border: none;
+  background-color: #292961;
+  color: white;
+  border : none;
+  border-radius: 10px;
+}
+
+#delbutton {
+  background-color: rgb(255, 255, 255);
+  color: #292961;
+  border: solid 1px;
+  border-color: #292961;
   border-radius: 10px;
 }
 

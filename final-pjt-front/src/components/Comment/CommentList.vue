@@ -55,9 +55,10 @@ export default {
 
 <style>
 #comments {
-    background-color: rgb(221, 234, 247);
+    background-color:#f8f8fa;
+
     border-radius: 10px;
-    width: 600px;
+    width: 505px;
     align-items: center;
     padding-inline: 20px;
 
@@ -73,14 +74,18 @@ export default {
 }
 
 .updatebutton {
-    background-color: rgba(190, 255, 255, 0.767);
+    background-color: #292961;
+    color: white;
     border : none;
     border-radius: 10px;
 }
 #cancle {
-    background-color: rgb(255, 175, 175);
+    background-color: rgb(255, 255, 255);
+    color: #292961;
+    border: solid 1px;
+    border-color: #292961;
     border-radius: 10px;
-    border: none;
+    /* border: none; */
 }
 .commentbutton{
     width: 60px;

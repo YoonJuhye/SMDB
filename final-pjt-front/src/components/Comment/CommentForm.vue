@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex" style="padding-inline: 10px;">
       <input @keyup.enter="createCommentbutton()" class="form" type="text" v-model="comment.content">
       <button class="button" @click="createCommentbutton()">작성</button>
   </div>
@@ -36,6 +36,7 @@ export default {
 
 <style>
 .form {
+    
     border-radius: 10px;
     border: solid 1px;
     margin-right: 10px;
@@ -44,6 +45,7 @@ export default {
     padding-inline: 30px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(166, 220, 245);;
+    background-color: #292961;
+    color: white;
 }
 </style>

@@ -22,7 +22,7 @@
           <label for="password2">Confirm PW</label>
       </div>
       <div>
-        <p class="pw-note">* 비밀번호는 숫자, 알파벳, 특수문자가 포함 된 8자리 이상이어야 합니다.</p>
+        <p class="pw-note">* 비밀번호는 숫자, 알파벳이 포함된 8자리 이상이어야 합니다.</p>
       </div>
       <input type="submit" value="Sign Up">
     </form>
